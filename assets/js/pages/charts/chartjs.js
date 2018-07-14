@@ -38,23 +38,24 @@ function getChartJs(type) {
     }
     else if (type === 'bar') {
         config = {
-            type: 'bar',
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [{
-                    label: "My First dataset",
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    backgroundColor: 'rgba(0, 188, 212, 0.8)'
-                }, {
-                        label: "My Second dataset",
-                        data: [28, 48, 40, 19, 86, 27, 90],
-                        backgroundColor: 'rgba(233, 30, 99, 0.8)'
-                    }]
-            },
-            options: {
-                responsive: true,
-                legend: false
-            }
+           type: 'bar',
+    data: {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Desember"],
+      datasets: [
+        {
+          label: "Jumlah Peserta P3U",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#e8c3b9","#c45850"],
+          data: [2478,5267,734,784,433,2478,5267,734,784,433,444,432]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: ''
+      }
+    }
         }
     }
     else if (type === 'radar') {

@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
             </div>
-            <p>Mohon Tunggu ...</p>
+            <p>Please wait...</p>
         </div>
     </div>
     <!-- #END# Page Loader -->
@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-             <a class="navbar-brand" href="index.html">SISTEM P3U MEIKARTA</a>
+                <a class="navbar-brand" href="index.html">SISTEM P3U MEIKARTA</a>
             </div>
          
         </div>
@@ -87,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li>
                         <a href="index.html">
                           <i class="material-icons">power_settings_new</i>
-                            <span>Keluar</span>
+                            <span>Sign Out</span>
                         </a>
                     </li>
                      <li class="active">
