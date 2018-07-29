@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_mcrud extends CI_Model { 
+class M_dtb extends CI_Model { 
 
 	  var $table = "tb_lintas";  
       var $select_column = array("urut", "lintas", "prodi", "nama_lintas");  

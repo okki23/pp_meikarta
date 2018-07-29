@@ -1,20 +1,79 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mcrud extends CI_Controller {
+class Dtb extends CI_Controller {
 
  
  	public function __construct(){
  		parent::__construct();
- 		$this->load->model('m_mcrud');
+ 		$this->load->model('m_dtb');
  	}
 	public function index()
 	{ 
-		$this->load->view('mcrud/mcrud_view');
+		$this->load->view('dtb/dtb_view');
 	}
 	 
+	public function get_data_edit(){
+		$urut = $this->uri->segment(3); 
+		$get = $this->db->where('urut',$urut)->get('tb_lintas')->row();
+		echo json_encode($get,TRUE);
+	}
+	
+	public function delete_data(){
+		$urut = $this->uri->segment(3); 
+		
+		
+		$getfoto = $this->db->where('urut',$urut)->get('tb_lintas')->row();
+		
+		if($getfoto->foto != '' || $getfoto->foto != NULL){
+          unlink("upload/".str_replace(" ","_",$getfoto->foto));
+		}  
+		
+		$get = $this->db->where('urut',$urut)->delete('tb_lintas');
+		if($get){
+			$result = array("response"=>array('message'=>'success'));
+		}else{
+			$result = array("response"=>array('message'=>'failed'));
+		}
+		
+		echo json_encode($result,TRUE);
+	}
+	
+	public function save_data(){
+  
+		$urut = $this->input->post('urut');
+		$lintas = $this->input->post('lintas');
+		$prodi = $this->input->post('prodi');
+		$nama_lintas = $this->input->post('nama_lintas'); 
+		$method =  $this->input->post('nama_lintas'); 
+
+    if($method == 'Add'){
+
+    }else{
+
+    }
+    
+		$send_to_db = array('urut'=>$urut,
+          							'lintas'=>$lintas,
+          							'prodi'=>$prodi,
+          							'nama_lintas'=>$nama_lintas,
+          							'foto'=>$this->upload_image()
+                        );
+		
+		$save = $this->db->insert('tb_lintas',$send_to_db);
+		
+
+		if($save){
+			$result = array("response"=>array('message'=>'success'));
+		}else{
+			$result = array("response"=>array('message'=>'failed'));
+		}
+		
+		echo json_encode($result,TRUE);
+	}
+	
     function fetch_user(){  
-	header('Content-type: text/javascript');
+ 
 		   $getdata = $this->db->get('tb_lintas')->result();
 		   $data = array();  
            foreach($getdata as $row)  
@@ -23,42 +82,29 @@ class Mcrud extends CI_Controller {
                  
                 $sub_array[] = $row->urut;  
                 $sub_array[] = $row->lintas;  
-				$sub_array[] = $row->prodi;  
+			          $sub_array[] = $row->prodi;  
                 $sub_array[] = $row->nama_lintas;  
+				if($row->foto == '' || $row->foto == NULL){
+					$sub_array[] = '<a title="Preview" onclick="Sempak();"  href="javascript:void(0)"><img class="thumbnail img-responsive" src="'.base_url().'upload/photo_na.jpg"></a>';
+				}else{
+					$sub_array[] = '<a title="Preview" onclick="Sempak();" href="javascript:void(0)"><img class="thumbnail img-responsive" src="'.base_url().'upload/'.$row->foto.'"></a>';
+				}
+				 
+			    $sub_array[] = '<a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Edit('.$row->urut.');" > <i class="material-icons">create</i> Ubah </a>  &nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Delete('.$row->urut.');" > <i class="material-icons">delete</i> Hapus </a>';  
                
                 $data[] = $sub_array;  
            }  
-		   $output = array("data"=>$getdata);
-		     echo json_encode($output,JSON_PRETTY_PRINT);  
-			 exit();
-           /* $this->load->model("m_mcrud");  
-           $fetch_data = $this->m_mcrud->make_datatables();  
-           $data = array(); */  
-           foreach($fetch_data as $row)  
-           {  
-                $sub_array = array();  
-                //$sub_array[] = '<img src="'.base_url().'upload/'.$row->image.'" class="img-thumbnail" width="50" height="35" />';  
-                $sub_array[] = $row->first_name;  
-                $sub_array[] = $row->last_name;  
-                $sub_array[] = '<button type="button" name="update" id="'.$row->id.'" class="btn btn-warning btn-xs update">Update</button>';  
-                $sub_array[] = '<button type="button" name="delete" id="'.$row->id.'" class="btn btn-danger btn-xs delete">Delete</button>';  
-                $data[] = $sub_array;  
-           }  
-           $output = array(  
-                "draw"                    =>     intval($_POST["draw"]),  
-                "recordsTotal"          =>      $this->crud_model->get_all_data(),  
-                "recordsFiltered"     =>     $this->crud_model->get_filtered_data(),  
-                "data"                    =>     $data  
-           );  
-           echo json_encode($output);  
+		   $output = array("data"=>$data);
+		   echo json_encode($output);  
+		  
       }  
       function user_action(){  
            if($_POST["action"] == "Add")  
            {  
                 $insert_data = array(  
-                     'first_name'          =>     $this->input->post('first_name'),  
-                     'last_name'               =>     $this->input->post("last_name"),  
-                     'image'                    =>     $this->upload_image()  
+                     'first_name'        =>     $this->input->post('first_name'),  
+                     'last_name'         =>     $this->input->post("last_name"),  
+                     'image'             =>     $this->upload_image()  
                 );  
                 $this->load->model('crud_model');  
                 $this->crud_model->insert_crud($insert_data);  

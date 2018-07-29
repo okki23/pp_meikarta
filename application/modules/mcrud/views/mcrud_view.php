@@ -1,17 +1,12 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To P3U Meikarta</title>
+    <title>Jquery DataTable | Bootstrap Based Admin Template - Material Design</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -21,21 +16,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="<?php echo base_url(); ?>assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href=".<?php echo base_url(); ?>assets/plugins/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Animation Css -->
     <link href="<?php echo base_url(); ?>assets/plugins/animate-css/animate.css" rel="stylesheet" />
 
-    <!-- Morris Chart Css-->
-    <link href="<?php echo base_url(); ?>assets/plugins/morrisjs/morris.css" rel="stylesheet" />
+    <!-- JQuery DataTable Css -->
+    <link href="<?php echo base_url(); ?>assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo base_url(); ?>assets/css/themes/all-themes.css" rel="stylesheet" />
-
-    
 </head>
 
 <body class="theme-red">
@@ -60,17 +53,219 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
     <!-- Search Bar -->
-   
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-     <nav class="navbar">
+    <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">SISTEM P3U MEIKARTA</a>
+                <a class="navbar-brand" href="../../index.html">ADMINBSB - MATERIAL DESIGN</a>
             </div>
-         
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <!-- #END# Call Search -->
+                    <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">7</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">person_add</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>12 new members joined</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">add_shopping_cart</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>4 sales made</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 22 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-red">
+                                                <i class="material-icons">delete_forever</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy Doe</b> deleted account</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-orange">
+                                                <i class="material-icons">mode_edit</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy</b> changed name</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 2 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-blue-grey">
+                                                <i class="material-icons">comment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> commented your post</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 4 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">cached</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> updated status</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-purple">
+                                                <i class="material-icons">settings</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Settings updated</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> Yesterday
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
+                    <!-- Tasks -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">flag</i>
+                            <span class="label-count">9</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">TASKS</li>
+                            <li class="body">
+                                <ul class="menu tasks">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <h4>
+                                                Footer display issue
+                                                <small>32%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-pink" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 32%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <h4>
+                                                Make new buttons
+                                                <small>45%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-cyan" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <h4>
+                                                Create new dashboard
+                                                <small>54%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-teal" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 54%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <h4>
+                                                Solve transition issue
+                                                <small>65%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <h4>
+                                                Answer GitHub questions
+                                                <small>92%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 92%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Tasks -->
+                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -78,32 +273,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-          
+            <div class="user-info">
+                <div class="image">
+                    <img src="../../images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+                    <div class="email">john.doe@example.com</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li role="seperator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                            <li role="seperator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
-                        <a href="index.html">
-                          <i class="material-icons">power_settings_new</i>
-                            <span>Sign Out</span>
-                        </a>
-                    </li>
-                     <li class="active">
-                        <a href="index.html">
+                        <a href="../../index.html">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/typography.html">
+                        <a href="../../pages/typography.html">
                             <i class="material-icons">text_fields</i>
                             <span>Typography</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/helper-classes.html">
+                        <a href="../../pages/helper-classes.html">
                             <i class="material-icons">layers</i>
                             <span>Helper Classes</span>
                         </a>
@@ -120,13 +329,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="pages/widgets/cards/basic.html">Basic</a>
+                                        <a href="../../pages/widgets/cards/basic.html">Basic</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/cards/colored.html">Colored</a>
+                                        <a href="../../pages/widgets/cards/colored.html">Colored</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/cards/no-header.html">No Header</a>
+                                        <a href="../../pages/widgets/cards/no-header.html">No Header</a>
                                     </li>
                                 </ul>
                             </li>
@@ -136,19 +345,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
+                                        <a href="../../pages/widgets/infobox/infobox-1.html">Infobox-1</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
+                                        <a href="../../pages/widgets/infobox/infobox-2.html">Infobox-2</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
+                                        <a href="../../pages/widgets/infobox/infobox-3.html">Infobox-3</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
+                                        <a href="../../pages/widgets/infobox/infobox-4.html">Infobox-4</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
+                                        <a href="../../pages/widgets/infobox/infobox-5.html">Infobox-5</a>
                                     </li>
                                 </ul>
                             </li>
@@ -161,74 +370,74 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Alerts</a>
+                                <a href="../../pages/ui/alerts.html">Alerts</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Animations</a>
+                                <a href="../../pages/ui/animations.html">Animations</a>
                             </li>
                             <li>
-                                <a href="pages/ui/badges.html">Badges</a>
+                                <a href="../../pages/ui/badges.html">Badges</a>
                             </li>
 
                             <li>
-                                <a href="pages/ui/breadcrumbs.html">Breadcrumbs</a>
+                                <a href="../../pages/ui/breadcrumbs.html">Breadcrumbs</a>
                             </li>
                             <li>
-                                <a href="pages/ui/buttons.html">Buttons</a>
+                                <a href="../../pages/ui/buttons.html">Buttons</a>
                             </li>
                             <li>
-                                <a href="pages/ui/collapse.html">Collapse</a>
+                                <a href="../../pages/ui/collapse.html">Collapse</a>
                             </li>
                             <li>
-                                <a href="pages/ui/colors.html">Colors</a>
+                                <a href="../../pages/ui/colors.html">Colors</a>
                             </li>
                             <li>
-                                <a href="pages/ui/dialogs.html">Dialogs</a>
+                                <a href="../../pages/ui/dialogs.html">Dialogs</a>
                             </li>
                             <li>
-                                <a href="pages/ui/icons.html">Icons</a>
+                                <a href="../../pages/ui/icons.html">Icons</a>
                             </li>
                             <li>
-                                <a href="pages/ui/labels.html">Labels</a>
+                                <a href="../../pages/ui/labels.html">Labels</a>
                             </li>
                             <li>
-                                <a href="pages/ui/list-group.html">List Group</a>
+                                <a href="../../pages/ui/list-group.html">List Group</a>
                             </li>
                             <li>
-                                <a href="pages/ui/media-object.html">Media Object</a>
+                                <a href="../../pages/ui/media-object.html">Media Object</a>
                             </li>
                             <li>
-                                <a href="pages/ui/modals.html">Modals</a>
+                                <a href="../../pages/ui/modals.html">Modals</a>
                             </li>
                             <li>
-                                <a href="pages/ui/notifications.html">Notifications</a>
+                                <a href="../../pages/ui/notifications.html">Notifications</a>
                             </li>
                             <li>
-                                <a href="pages/ui/pagination.html">Pagination</a>
+                                <a href="../../pages/ui/pagination.html">Pagination</a>
                             </li>
                             <li>
-                                <a href="pages/ui/preloaders.html">Preloaders</a>
+                                <a href="../../pages/ui/preloaders.html">Preloaders</a>
                             </li>
                             <li>
-                                <a href="pages/ui/progressbars.html">Progress Bars</a>
+                                <a href="../../pages/ui/progressbars.html">Progress Bars</a>
                             </li>
                             <li>
-                                <a href="pages/ui/range-sliders.html">Range Sliders</a>
+                                <a href="../../pages/ui/range-sliders.html">Range Sliders</a>
                             </li>
                             <li>
-                                <a href="pages/ui/sortable-nestable.html">Sortable & Nestable</a>
+                                <a href="../../pages/ui/sortable-nestable.html">Sortable & Nestable</a>
                             </li>
                             <li>
-                                <a href="pages/ui/tabs.html">Tabs</a>
+                                <a href="../../pages/ui/tabs.html">Tabs</a>
                             </li>
                             <li>
-                                <a href="pages/ui/thumbnails.html">Thumbnails</a>
+                                <a href="../../pages/ui/thumbnails.html">Thumbnails</a>
                             </li>
                             <li>
-                                <a href="pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
+                                <a href="../../pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
                             </li>
                             <li>
-                                <a href="pages/ui/waves.html">Waves</a>
+                                <a href="../../pages/ui/waves.html">Waves</a>
                             </li>
                         </ul>
                     </li>
@@ -239,39 +448,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/forms/basic-form-elements.html">Basic Form Elements</a>
+                                <a href="../../pages/forms/basic-form-elements.html">Basic Form Elements</a>
                             </li>
                             <li>
-                                <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                                <a href="../../pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
                             </li>
                             <li>
-                                <a href="pages/forms/form-examples.html">Form Examples</a>
+                                <a href="../../pages/forms/form-examples.html">Form Examples</a>
                             </li>
                             <li>
-                                <a href="pages/forms/form-validation.html">Form Validation</a>
+                                <a href="../../pages/forms/form-validation.html">Form Validation</a>
                             </li>
                             <li>
-                                <a href="pages/forms/form-wizard.html">Form Wizard</a>
+                                <a href="../../pages/forms/form-wizard.html">Form Wizard</a>
                             </li>
                             <li>
-                                <a href="pages/forms/editors.html">Editors</a>
+                                <a href="../../pages/forms/editors.html">Editors</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
                             <span>Tables</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/tables/normal-tables.html">Normal Tables</a>
+                                <a href="../../pages/tables/normal-tables.html">Normal Tables</a>
+                            </li>
+                            <li class="active">
+                                <a href="../../pages/tables/jquery-datatable.html">Jquery Datatables</a>
                             </li>
                             <li>
-                                <a href="pages/tables/jquery-datatable.html">Jquery Datatables</a>
-                            </li>
-                            <li>
-                                <a href="pages/tables/editable-table.html">Editable Tables</a>
+                                <a href="../../pages/tables/editable-table.html">Editable Tables</a>
                             </li>
                         </ul>
                     </li>
@@ -282,10 +491,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/medias/image-gallery.html">Image Gallery</a>
+                                <a href="../../pages/medias/image-gallery.html">Image Gallery</a>
                             </li>
                             <li>
-                                <a href="pages/medias/carousel.html">Carousel</a>
+                                <a href="../../pages/medias/carousel.html">Carousel</a>
                             </li>
                         </ul>
                     </li>
@@ -296,19 +505,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/charts/morris.html">Morris</a>
+                                <a href="../../pages/charts/morris.html">Morris</a>
                             </li>
                             <li>
-                                <a href="pages/charts/flot.html">Flot</a>
+                                <a href="../../pages/charts/flot.html">Flot</a>
                             </li>
                             <li>
-                                <a href="pages/charts/chartjs.html">ChartJS</a>
+                                <a href="../../pages/charts/chartjs.html">ChartJS</a>
                             </li>
                             <li>
-                                <a href="pages/charts/sparkline.html">Sparkline</a>
+                                <a href="../../pages/charts/sparkline.html">Sparkline</a>
                             </li>
                             <li>
-                                <a href="pages/charts/jquery-knob.html">Jquery Knob</a>
+                                <a href="../../pages/charts/jquery-knob.html">Jquery Knob</a>
                             </li>
                         </ul>
                     </li>
@@ -319,22 +528,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/examples/sign-in.html">Sign In</a>
+                                <a href="../../pages/examples/sign-in.html">Sign In</a>
                             </li>
                             <li>
-                                <a href="pages/examples/sign-up.html">Sign Up</a>
+                                <a href="../../pages/examples/sign-up.html">Sign Up</a>
                             </li>
                             <li>
-                                <a href="pages/examples/forgot-password.html">Forgot Password</a>
+                                <a href="../../pages/examples/forgot-password.html">Forgot Password</a>
                             </li>
                             <li>
-                                <a href="pages/examples/blank.html">Blank Page</a>
+                                <a href="../../pages/examples/blank.html">Blank Page</a>
                             </li>
                             <li>
-                                <a href="pages/examples/404.html">404 - Not Found</a>
+                                <a href="../../pages/examples/404.html">404 - Not Found</a>
                             </li>
                             <li>
-                                <a href="pages/examples/500.html">500 - Server Error</a>
+                                <a href="../../pages/examples/500.html">500 - Server Error</a>
                             </li>
                         </ul>
                     </li>
@@ -345,13 +554,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/maps/google.html">Google Map</a>
+                                <a href="../../pages/maps/google.html">Google Map</a>
                             </li>
                             <li>
-                                <a href="pages/maps/yandex.html">YandexMap</a>
+                                <a href="../../pages/maps/yandex.html">YandexMap</a>
                             </li>
                             <li>
-                                <a href="pages/maps/jvectormap.html">jVectorMap</a>
+                                <a href="../../pages/maps/jvectormap.html">jVectorMap</a>
                             </li>
                         </ul>
                     </li>
@@ -398,101 +607,235 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </ul>
                     </li>
                     <li>
-                        <a href="pages/changelogs.html">
+                        <a href="../changelogs.html">
                             <i class="material-icons">update</i>
                             <span>Changelogs</span>
                         </a>
                     </li>
-                     
+                    <li class="header">LABELS</li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="material-icons col-red">donut_large</i>
+                            <span>Important</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="material-icons col-amber">donut_large</i>
+                            <span>Warning</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="material-icons col-light-blue">donut_large</i>
+                            <span>Information</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2018  <a href="mailto:karlinamaksum19@gmail.com">Karlina Maksum</a>.
+                    &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
                 </div>
-             </div>
+                <div class="version">
+                    <b>Version: </b> 1.0.5
+                </div>
+            </div>
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
         <!-- Right Sidebar -->
-   
+        <aside id="rightsidebar" class="right-sidebar">
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>
+                <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
+                    <ul class="demo-choose-skin">
+                        <li data-theme="red" class="active">
+                            <div class="red"></div>
+                            <span>Red</span>
+                        </li>
+                        <li data-theme="pink">
+                            <div class="pink"></div>
+                            <span>Pink</span>
+                        </li>
+                        <li data-theme="purple">
+                            <div class="purple"></div>
+                            <span>Purple</span>
+                        </li>
+                        <li data-theme="deep-purple">
+                            <div class="deep-purple"></div>
+                            <span>Deep Purple</span>
+                        </li>
+                        <li data-theme="indigo">
+                            <div class="indigo"></div>
+                            <span>Indigo</span>
+                        </li>
+                        <li data-theme="blue">
+                            <div class="blue"></div>
+                            <span>Blue</span>
+                        </li>
+                        <li data-theme="light-blue">
+                            <div class="light-blue"></div>
+                            <span>Light Blue</span>
+                        </li>
+                        <li data-theme="cyan">
+                            <div class="cyan"></div>
+                            <span>Cyan</span>
+                        </li>
+                        <li data-theme="teal">
+                            <div class="teal"></div>
+                            <span>Teal</span>
+                        </li>
+                        <li data-theme="green">
+                            <div class="green"></div>
+                            <span>Green</span>
+                        </li>
+                        <li data-theme="light-green">
+                            <div class="light-green"></div>
+                            <span>Light Green</span>
+                        </li>
+                        <li data-theme="lime">
+                            <div class="lime"></div>
+                            <span>Lime</span>
+                        </li>
+                        <li data-theme="yellow">
+                            <div class="yellow"></div>
+                            <span>Yellow</span>
+                        </li>
+                        <li data-theme="amber">
+                            <div class="amber"></div>
+                            <span>Amber</span>
+                        </li>
+                        <li data-theme="orange">
+                            <div class="orange"></div>
+                            <span>Orange</span>
+                        </li>
+                        <li data-theme="deep-orange">
+                            <div class="deep-orange"></div>
+                            <span>Deep Orange</span>
+                        </li>
+                        <li data-theme="brown">
+                            <div class="brown"></div>
+                            <span>Brown</span>
+                        </li>
+                        <li data-theme="grey">
+                            <div class="grey"></div>
+                            <span>Grey</span>
+                        </li>
+                        <li data-theme="blue-grey">
+                            <div class="blue-grey"></div>
+                            <span>Blue Grey</span>
+                        </li>
+                        <li data-theme="black">
+                            <div class="black"></div>
+                            <span>Black</span>
+                        </li>
+                    </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="settings">
+                    <div class="demo-settings">
+                        <p>GENERAL SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Report Panel Usage</span>
+                                <div class="switch">
+                                    <label><input type="checkbox" checked><span class="lever"></span></label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Email Redirect</span>
+                                <div class="switch">
+                                    <label><input type="checkbox"><span class="lever"></span></label>
+                                </div>
+                            </li>
+                        </ul>
+                        <p>SYSTEM SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Notifications</span>
+                                <div class="switch">
+                                    <label><input type="checkbox" checked><span class="lever"></span></label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Auto Updates</span>
+                                <div class="switch">
+                                    <label><input type="checkbox" checked><span class="lever"></span></label>
+                                </div>
+                            </li>
+                        </ul>
+                        <p>ACCOUNT SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Offline</span>
+                                <div class="switch">
+                                    <label><input type="checkbox"><span class="lever"></span></label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Location Permission</span>
+                                <div class="switch">
+                                    <label><input type="checkbox" checked><span class="lever"></span></label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
         <!-- #END# Right Sidebar -->
     </section>
 
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>DASHBOARD</h2>
+                <h2>
+                    JQUERY DATATABLES
+                    <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small>
+                </h2>
             </div>
-
-            <!-- Widgets -->
+            <!-- Basic Examples -->
             <div class="row clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-pink hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">playlist_add_check</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">STOK UNIT</div>
-                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-cyan hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">help</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">UNIT TERJUAL</div>
-                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-light-green hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">forum</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">P3U</div>
-                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-orange hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">person_add</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">REFUND</div>
-                            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Widgets -->
-            <!-- CPU Usage -->
-            <div class="row clearfix">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                       <div class="card">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
                         <div class="header">
-                            <h2> Grafik P3U Per Tahun 2018 </h2>
-                             
+                            <h2>
+                                BASIC EXAMPLE
+                            </h2>
+                            <br>
+                            <a href="javascript:void(0);" id="add" class="btn btn-primary"> + Add </a>
+                            
                         </div>
                         <div class="body">
-                            <canvas id="bar_chart" height="150"></canvas>
+                            <div class="table-responsive">
+                                 
+								 <table id="user_data" class="table table-bordered table-striped">  
+									 <thead>  
+										  <tr>  
+											   <th width="10%">Urut</th>  
+											   <th width="35%">Lintas</th>  
+											   <th width="35%">Prodi</th>  
+											   <th width="10%">Nama Lintas</th>   
+										  </tr>  
+									 </thead>  
+								</table>  
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# CPU Usage -->
-          
+            <!-- #END# Basic Examples -->
+            <!-- Exportable Table -->
+           
+            <!-- #END# Exportable Table -->
         </div>
     </section>
+
 
     <!-- Jquery Core Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
@@ -509,34 +852,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Waves Effect Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/node-waves/waves.js"></script>
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="<?php echo base_url(); ?>assets/plugins/jquery-countto/jquery.countTo.js"></script>
-
-    <!-- Morris Plugin Js -->
-    <script src="<?php echo base_url(); ?>assets/plugins/raphael/raphael.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/morrisjs/morris.js"></script>
-
-    <!-- ChartJs -->
-    <script src="<?php echo base_url(); ?>assets/plugins/chartjs/Chart.bundle.js"></script>
-
-    <!-- Flot Charts Plugin Js -->
-    <script src="<?php echo base_url(); ?>assets/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/flot-charts/jquery.flot.time.js"></script>
-
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="<?php echo base_url(); ?>assets/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
     <!-- Custom Js -->
     <script src="<?php echo base_url(); ?>assets/js/admin.js"></script>
+     
 
-    <script src="<?php echo base_url(); ?>assets/js/pages/charts/chartjs.js"></script>
-
-    <script src="<?php echo base_url(); ?>assets/js/pages/index.js"></script>
- 
+    <!-- Demo Js -->
     <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
+     <script type="text/javascript">
+        $(document).ready(function(){
+			$('#user_data').DataTable({  
+           "processing":true,  
+           "serverSide":true,  
+           "order":[],  
+           "ajax":{  
+                url:"<?php echo base_url() . 'mcrud/fetch_user'; ?>",  
+                type:"POST"  
+           },  
+           "columnDefs":[  
+                {  
+                     "targets":[0, 3, 4],  
+                     "orderable":false,  
+                },  
+           ],  
+      });  
+		});
+    </script>
 </body>
 
 </html>
