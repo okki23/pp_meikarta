@@ -15,8 +15,9 @@ class Dashboard extends Parent_Controller {
  		$this->load->model('m_dashboard');
  	}
 	public function index(){
-		$data['judul'] =$this->data['judul']; 
-		$this->load->view('dashboard/dashboard_view',$data);
+		$data['judul'] = $this->data['judul']; 
+		$data['konten'] = 'dashboard/dashboard_view';
+		$this->load->view('template_view',$data);
 	}
 	 
 }

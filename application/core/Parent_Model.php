@@ -28,42 +28,61 @@ class Parent_Model extends CI_Model {
         return $data;
     }
 
-	public function fetch_user(){  
- 
-		   $getdata = $this->db->get($this->nama_tabel)->result();
-		   $data = array();  
-		   $no = 1;
-           foreach($getdata as $row)  
-           {  
-                $sub_array = array();  
-                $sub_array[] = $no;
-                $sub_array[] = $row->tipe;  
-                $sub_array[] = $row->lantai;  
-			    $sub_array[] = $row->unit;  
-        
-				if($row->foto == '' || $row->foto == NULL){
-					$sub_array[] = '<a title="Preview" onclick="Preview_Foto();"  href="javascript:void(0)"><img class="thumbnail img-responsive" src="'.base_url().'upload/photo_na.jpg"></a>';
-				}else{
-					$sub_array[] = '<a title="Preview" onclick="Preview_Foto();" href="javascript:void(0)"><img class="thumbnail img-responsive" src="'.base_url().'upload/'.$row->foto.'"></a>';
-				}
-				 
-			    $sub_array[] = '<a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="material-icons">create</i> Ubah </a>  &nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="material-icons">delete</i> Hapus </a>';  
-               
-                $data[] = $sub_array;  
-           }  
-           $no++;
-		   return $output = array("data"=>$data);
-		    
-    }
+	
     
     public function hapus_data($id){
     	$hapus = $this->db->where('id',$id)->delete($this->nama_tabel);
     	return $hapus;
  	}
+ 
+ 	public function simpan_data_master($data_form,$nama_tabel,$primary_key,$id){
 
- 	public function simpan_data($parsing){
- 	
- 		
-	 	
+ 		$user_insert = $this->session->userdata('username');
+ 		$date_insert = date('Y-m-d H:i:s');
+ 		$user_update = $this->session->userdata('username');
+ 		$date_update = date('Y-m-d H:i:s');
+		
+		$log_data_baru = array("user_insert"=>$user_insert,"date_insert"=>$date_insert); 
+		$log_data_update = array("user_update"=>$user_update,"date_update"=>$date_update); 
+	 
+
+		$save = array_merge($data_form,$log_data_baru);
+		
+		$update = array_merge($data_form,$log_data_update);
+		
+ 		if ($id === NULL || $id == '') { 
+            $this->db->set($save);
+            return $this->db->insert($nama_tabel);
+           
+        } else {
+            
+            $this->db->set($update);
+            $this->db->where($primary_key, $id);
+            return $this->db->update($nama_tabel);
+           
+        }
+
+ 	}
+	
+	public function simpan_data_transaksi($data_form,$nama_tabel,$primary_key,$id){
+
+ 		$user_insert = $this->session->userdata('username');
+ 		$date_insert = date('Y-m-d H:i:s');
+ 		$user_update = $this->session->userdata('username');
+ 		$date_update = date('Y-m-d H:i:s');
+		
+		
+ 		if ($id === NULL || $id == '') { 
+            $this->db->set($data_form);
+            return $this->db->insert($nama_tabel);
+           
+        } else {
+            
+            $this->db->set($data_form);
+            $this->db->where($primary_key, $id);
+            return $this->db->update($nama_tabel);
+           
+        }
+
  	}
 }

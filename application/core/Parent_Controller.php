@@ -8,12 +8,7 @@ deskripsi  : Class ini digunakan untuk menampung fungsi dasar yang mana fungsi t
 */
 class Parent_Controller extends CI_Controller {
 
-	/*
-	author     : Karlina
-	email      : karlinamaksum19@gmail.com
-	copyright  : 2018 
-	*/
-
+	 
 	public function __construct(){
 		parent::__construct(); 
 		$this->data['judul'] = 'Sistem Aplikasi P3U Meikarta';

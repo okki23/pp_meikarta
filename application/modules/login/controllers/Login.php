@@ -35,7 +35,7 @@ class Login extends Parent_Controller {
 		$session = $this->m_login->autentikasi($username,$password)->row();
 		//apabila tersedia maka akan mengalihkan ke halaman dashboard serta generate session aktif
 		if($auth->num_rows() > 0){
-			$this->session->set_userdata(array('username'=>$session->username));
+			$this->session->set_userdata(array('username'=>$session->username,'session'=>$session->tipe_user));
 			redirect(base_url('dashboard'));
 		}else{
 			echo "<script language=javascript>
