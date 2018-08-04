@@ -29,20 +29,14 @@ class M_unit extends Parent_Model {
            {  
                 $sub_array = array();  
                 $sub_array[] = $no;
-                $sub_array[] = $row->blok_tower;  
-                $sub_array[] = $row->lantai;  
-			    $sub_array[] = $row->no_unit;  
-				$sub_array[] = $row->luas;  
+                $sub_array[] = $row->blok_tower;   
+			    $sub_array[] = $row->no_unit;   
                 $sub_array[] = $row->tipe;  
-			    $sub_array[] = $row->harga;  
-        
-				if($row->foto == '' || $row->foto == NULL){
-					$sub_array[] = '<a data-image = "'.base_url().'upload/photo_na.jpg" id="longok" href="javascript:void(0)"><img class="thumbnail img-responsive" src="'.base_url().'upload/photo_na.jpg"></a>';
-				}else{
-					$sub_array[] = '<a data-image = "'.base_url().'upload/'.$row->foto.'" id="longok" href="javascript:void(0)"><img class="thumbnail img-responsive" src="'.base_url().'upload/'.$row->foto.'"></a>';
-				}
-				 
-			    $sub_array[] = '<a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="material-icons">create</i> Ubah </a>  &nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="material-icons">delete</i> Hapus </a>';  
+			    $sub_array[] = "Rp.".number_format($row->harga,0);  
+         
+			    $sub_array[] = '<a href="javascript:void(0)" class="btn btn-primary btn-xs waves-effect" id="detail" onclick="Show_Detail('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a> 
+								&nbsp; <a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="material-icons">create</i> Ubah </a> 
+								&nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="material-icons">delete</i> Hapus </a>';  
                
                 $data[] = $sub_array;  
                  $no++;

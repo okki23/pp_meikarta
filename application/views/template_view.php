@@ -30,6 +30,8 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo base_url(); ?>assets/css/themes/all-themes.css" rel="stylesheet" />
+	
+	<link href="<?php echo base_url(); ?>assets/css/card_custom.css" rel="stylesheet" />
     
     <!-- Jquery Core Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
@@ -63,13 +65,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.7.0/bootstrap-lightbox.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap-notify.js"></script>
  
-    <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-notify/bootstrap-notify.js"></script>
+ 
     <script src="<?php echo base_url(); ?>assets/plugins/autosize/autosize.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/pages/ui/notifications.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/momentjs/moment.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>   
     <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
-  
+	 
 </head>
 
 <body class="theme-red">
@@ -107,7 +109,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                      
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true">    <i class="material-icons">person</i> <?php echo $this->session->userdata('username'); ?> </a></li>
+                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true">    <i class="material-icons">person</i>   </a></li>
                    
                 </ul>
             </div>
@@ -122,13 +124,15 @@
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
-                <?php
-                /*apabila login sebagai sales*/
-                if($this->session->userdata('session') == '1'){
-                ?>
-
-                <ul class="list">
-                    <li>
+                
+				<!--list menu-->
+			    <?php
+				if($this->session->userdata('session') == 1){
+				// apabila login sebagai superadmin
+				?>
+				
+					<ul class="list">
+					<li>
                         <a href="<?php echo base_url('dashboard'); ?>">
                             <i class="material-icons">home</i>
                             <span>Home  </span>
@@ -158,13 +162,27 @@
                            <i class="material-icons">dns</i>
                             <span>Sales</span>
                         </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('user'); ?>">
+                    </li>
+                     <li>
+                        <a href="<?php echo base_url('admin_pppu'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>User</span>
+                            <span>Admin PPPU</span>
                         </a>
                     </li> 
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">dns</i>
+                            <span>User</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<?php echo base_url('akun_sales'); ?>">Akun Sales</a>
+                            </li>
+                            <li>
+                                 <a href="<?php echo base_url('akun_admin_pppu'); ?>">Akun Admin PPPU</a>
+                            </li> 
+                        </ul>
+                    </li>
                     <li class="header">Menu Transaksi</li>
                     <li>
                         <a href="<?php echo base_url('booking_fee'); ?>">
@@ -179,12 +197,13 @@
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('pppu'); ?>">
+                        <a href="<?php echo base_url('validasi_pppu'); ?>">
                             <i class="material-icons">dns</i>
-                            <span>PPPU</span>
+                            <span>Validasi P3U</span>
                         </a>
                     </li> 
-                    <li class="header">Laporan</li>
+                    <li>
+					<li class="header">Laporan</li>
                     <li>
                         <a href="<?php echo base_url('closing'); ?>">
                             <i class="material-icons">dns</i>
@@ -196,88 +215,39 @@
                             <i class="material-icons">dns</i>
                             <span>Refund</span>
                         </a>
-                    </li> 
- 
-                 
-                    <li>
-                         
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../../pages/tables/normal-tables.html">Normal Tables</a>
-                            </li>
-                            <li class="active">
-                                <a href="../../pages/tables/jquery-datatable.html">Jquery Datatables</a>
-                            </li>
-                            <li>
-                                <a href="../../pages/tables/editable-table.html">Editable Tables</a>
-                            </li>
-                        </ul>
-                    </li>
-                
-                    
-                </ul>
+                    </li>  
+					</ul>
+					
+				<?php
+				}else if($this->session->userdata('session') == 2){
+				// apabila login sebagai admin pppu
+				?>
 
-
-                <?php
-                /*apabila login sebagai admin p3u*/
-                }else{
-                ?>
-
-                <ul class="list">
-                    <li>
+					<ul class="list">
+					<li>
                         <a href="<?php echo base_url('dashboard'); ?>">
                             <i class="material-icons">home</i>
                             <span>Home  </span>
                         </a>
-                    </li>  
-                    <li class="header">Menu Transaksi</li>
+                    </li> 
+                     
+                    <li class="header">Menu Transaksi</li> 
                     <li>
                         <a href="<?php echo base_url('dashboard'); ?>">
                             <i class="material-icons">dns</i>
                             <span>Validasi P3U</span>
                         </a>
                     </li> 
-                    <li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
-                            <i class="material-icons">dns</i>
-                            <span>PU</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
-                            <i class="material-icons">dns</i>
-                            <span>PPPU</span>
-                        </a>
-                    </li> 
-                    
-
-
-                    
                  
-                    <li>
-                         
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../../pages/tables/normal-tables.html">Normal Tables</a>
-                            </li>
-                            <li class="active">
-                                <a href="../../pages/tables/jquery-datatable.html">Jquery Datatables</a>
-                            </li>
-                            <li>
-                                <a href="../../pages/tables/editable-table.html">Editable Tables</a>
-                            </li>
-                        </ul>
-                    </li>
-                
-                    
-                </ul>
+					</ul>
+				
+				<?php
+				}else{
+				// apabila login sebagai sales
+				?>
 
-                <?php
-                /*apabila login sebagai super admin*/
-                }
-                ?>
-                <ul class="list">
-                    <li>
+					<ul class="list">
+					<li>
                         <a href="<?php echo base_url('dashboard'); ?>">
                             <i class="material-icons">home</i>
                             <span>Home  </span>
@@ -296,77 +266,44 @@
                             <span>Unit</span>
                         </a>
                     </li> 
-                    <li>
-                        <a href="<?php echo base_url('bank'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Bank</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('sales'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Sales</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('user'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>User</span>
-                        </a>
-                    </li> 
+                    
+                    
+                    
                     <li class="header">Menu Transaksi</li>
                     <li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
+                        <a href="<?php echo base_url('booking_fee'); ?>">
                             <i class="material-icons">dns</i>
                             <span>Booking Fee</span>
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
+                        <a href="<?php echo base_url('pu'); ?>">
                             <i class="material-icons">dns</i>
                             <span>PU</span>
                         </a>
-                    </li> 
+                    </li>  
                     <li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
-                            <i class="material-icons">dns</i>
-                            <span>PPPU</span>
-                        </a>
-                    </li> 
-                    <li class="header">Laporan</li>
+					<li class="header">Laporan</li>
                     <li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
+                        <a href="<?php echo base_url('closing'); ?>">
                             <i class="material-icons">dns</i>
                             <span>Closing</span>
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
+                        <a href="<?php echo base_url('refund'); ?>">
                             <i class="material-icons">dns</i>
                             <span>Refund</span>
                         </a>
                     </li> 
-
-
+                          
                     
-                 
-                    <li>
-                         
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../../pages/tables/normal-tables.html">Normal Tables</a>
-                            </li>
-                            <li class="active">
-                                <a href="../../pages/tables/jquery-datatable.html">Jquery Datatables</a>
-                            </li>
-                            <li>
-                                <a href="../../pages/tables/editable-table.html">Editable Tables</a>
-                            </li>
-                        </ul>
-                    </li>
-                
-                    
-                </ul>
+					</ul>
+				
+				<?php 
+				}
+				?>
+			   
             </div>
             <!-- #Menu -->
             <!-- Footer -->
@@ -385,15 +322,9 @@
             
             
                     <div class="demo-settings">
-                        <p>Informasi Akun</p>
+                        <p> Hai <?php echo $this->session->userdata('username') . " ! <br> Anda masuk sebagai " .level_help($this->session->userdata('session')); ?> </p>
                         <ul class="demo-choose-skin">
-                        <a href="<?php echo base_url('login/akun'); ?>">
-                           <li> 
-                           <i class="material-icons">build</i>
-                            <span>Pengaturan Akun</span>
-                           
-                        </li>
-                        </a>
+                       
                          <a href="<?php echo base_url('login/logout'); ?>">
                         <li>
                           

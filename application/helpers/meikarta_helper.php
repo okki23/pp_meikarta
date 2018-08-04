@@ -3,11 +3,11 @@ if(!function_exists('level_help')){
 	function level_help($params){
         $res = '';
 		if($params == 1){
-			$res = 'Sales';
+			$res = 'Super Admin';
 		}else if($params == 2){
-			$res = 'Admin P3U';
+			$res = 'Admin PPPU';
         }else if($params == 3){
-            $res = 'Super Admin';
+            $res = 'Sales';
         }
 
 		return $res;
@@ -23,6 +23,36 @@ function acakangkahuruf($params)
     for ($i = 0; $i < $params; $i++) {
   $pos = rand(0, strlen($karakter)-1);
   $string .= $karakter{$pos};
+    }
+    return $string;
+}
+
+function generate_kode_pelanggan($params){
+    $karakter= '1234567890';
+    $string = '';
+    for ($i = 0; $i < $params; $i++) {
+        $pos = rand(0, strlen($karakter)-1);
+        $string .= $karakter{$pos};
+    }
+    return $string;
+}
+
+function generate_ttbf(){
+    $karakter= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
+    $string = '';
+    for ($i = 0; $i < $params; $i++) {
+        $pos = rand(0, strlen($karakter)-1);
+        $string .= $karakter{$pos};
+    }
+    return $string;
+}
+
+function generate_kp(){
+    $karakter= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
+    $string = '';
+    for ($i = 0; $i < $params; $i++) {
+        $pos = rand(0, strlen($karakter)-1);
+        $string .= $karakter{$pos};
     }
     return $string;
 }

@@ -20,18 +20,14 @@
                                 
                             <div class="table-responsive">
 							   <table class="table table-bordered table-striped table-hover js-basic-example" id="example" >
- 
 									<thead>
 										<tr>
 											<th style="width:5%;">No</th>
-                                            <th style="width:5%;">Blok Tower</th> 
-											<th style="width:5%;">Lantai</th>
-											<th style="width:5%;">Unit</th> 
-											<th style="width:5%;">Luas</th> 
+                                            <th style="width:5%;">Blok Tower</th>  
+											<th style="width:5%;">Unit</th>  
 											<th style="width:5%;">Tipe</th> 
 											<th style="width:5%;">Harga</th> 
-											<th style="width:10%;">Foto</th> 
-											<th style="width:10%;">Opsi</th> 
+											<th style="width:15%;">Opsi</th> 
 										</tr>
 									</thead> 
 								</table> 
@@ -91,19 +87,79 @@
 
 									<div class="form-group">
                                         <div class="form-line">
-                                           <input type="file" name="user_image" id="user_image" class="form-control" onchange="PreviewGambar(this);" placeholder="Foto" />  
+											Upload Foto 
+											<input type="file" name="user_image" id="user_image" class="form-control" onchange="PreviewGambar(this);" placeholder="Foto" />  
                                         </div>
 										   <input type="hidden" name="foto" id="foto">
                                     </div>
                                     <br>
                                     <img onerror="this.onerror=null;this.src='<?php echo base_url('upload/image_prev.jpg'); ?>';" id="image1" src="<?php echo base_url('upload/image_prev.jpg');?>" style="height: 300px;" alt="..." class="img-rounded img-responsive">
                                   <br>
-								  <hr>
+								  
 
 								   <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
                                    <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal"> <i class="material-icons">clear</i> Batal</button>
 							 </form>
+					   </div>
+                     
+                    </div>
+                </div>
+    </div>
+	
+	<!-- detail data customer -->
+	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Detail Unit</h4>
+                        </div>
+                        <div class="modal-body">
+						
+						<table class="table table-responsive">
+							<tr>
+								<td style="font-weight:bold;"> Blok Tower</td>
+								<td> : </td>
+								<td> <p id="blok_tower_dtl"> </p> </td>
+								
+								<td style="font-weight:bold;"> Tipe</td>
+								<td> : </td>
+								<td> <p id="tipe_dtl"> </p> </td> 
+							</tr>
+							<tr>
+								<td style="font-weight:bold;"> Lantai</td>
+								<td> : </td>
+								<td> <p id="lantai_dtl"> </p> </td>
+								
+								<td style="font-weight:bold;"> Luas</td>
+								<td> : </td>
+								<td> <p id="luas_dtl"> </p> </td> 
+							</tr>
+							<tr>
+								<td style="font-weight:bold;"> No Unit</td>
+								<td> : </td>
+								<td> <p id="no_unit_dtl"> </p> </td>
+								
+								<td style="font-weight:bold;"> Harga </td>
+								<td> : </td>
+								<td> <p id="harga_dtl"> </p> </td> 
+							</tr>
+							 
+							<tr>
+								<td style="font-weight:bold;"> Foto Unit  </td> 
+								<td colspan="4">  : </td> 
+							</tr> 
+							<tr>
+								<td colspan="6" align="center">  
+								<img src="" class="img responsive" id="foto_unit_dtl">
+								</td>
+							</tr>
+						 
+							 <div class="modal-footer">
+							  <button type="button" class="btn btn-danger" data-dismiss="modal"> X Tutup </button>
+							 </div>
+						</table>
+                           
 					   </div>
                      
                     </div>
@@ -124,6 +180,28 @@
 			
         }
      }
+	 
+	 function Show_Detail(id){ 
+		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
+		$.ajax({
+			 url:"<?php echo base_url(); ?>unit/get_data_edit/"+id,
+			 type:"GET",
+			 dataType:"JSON", 
+			 success:function(result){  
+			 
+                 $("#blok_tower_dtl").html(result.blok_tower);
+                 $("#tipe_dtl").html(result.tipe);
+                 $("#no_unit_dtl").html(result.no_unit); 
+				 $("#lantai_dtl").html(result.lantai); 
+				 $("#harga_dtl").html(result.harga);
+				 $("#luas_dtl").html(result.luas);
+				 $("#foto_unit_dtl").attr("src","upload/"+result.foto);
+				 
+				 
+				 
+			 }
+		 });
+	 }
        
 	 function Ubah_Data(id){
 		$("#defaultModalLabel").html("Form Ubah Data");

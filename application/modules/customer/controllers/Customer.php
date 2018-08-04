@@ -13,7 +13,7 @@ class Customer extends Parent_Controller {
   digunakan sewaktu waktu tanpa harus menulis ulang
   */
   var $nama_tabel = 'm_customer';
-  var $daftar_field = array('id', 'blok_tower', 'lantai', 'no_customer', 'luas', 'tipe', 'foto', 'harga', 'user_insert', 'date_insert', 'user_update', 'date_update');
+  var $daftar_field = array('id', 'kode_pelanggan', 'nama', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'no_kantor', 'no_rumah', 'email', 'alamat', 'upload_ktp', 'upload_npwp', 'upload_slip_gaji', 'upload_dok_pendukung', 'user_insert', 'date_insert', 'user_update', 'date_update');
   var $primary_key = 'id';
  
   //method construct dijalankan pertama kali dan terus berjalan selama class digunakan
@@ -36,6 +36,11 @@ class Customer extends Parent_Controller {
    
 	}
 
+	public function generate_kode_pelanggan(){
+		$param = 5;
+		echo "KP".generate_kode_pelanggan($param);
+	}
+
   //method untuk memanggil data dari database untuk di buatkan data JSON dan di parse ke view yang akan di sajikan dalam datatable
   public function fetch_customer(){  
        $getdata = $this->m_customer->fetch_customer();
@@ -52,12 +57,30 @@ class Customer extends Parent_Controller {
   //method atau fungsi yang digunakan untuk menghapus data 
 	public function hapus_data(){
 		$id = $this->uri->segment(3);  
-    //cek apakah foto/gambar tersedia
-		$cek_foto = $this->db->where($this->primary_key,$id)->get($this->nama_tabel)->row(); 
+		
+        //cek apakah dokumen tersedia
+		$dokumen = $this->db->where($this->primary_key,$id)->get($this->nama_tabel)->row(); 
    
-		if($cek_foto->foto != '' || $cek_foto->foto != NULL){
-          //apabila foto ada maka dihapus,apabila sebaliknya maka tidak dihapus
-          unlink("upload/".str_replace(" ","_",$cek_foto->foto));
+		if($dokumen->upload_ktp!= '' || $dokumen->upload_ktp != NULL){
+          //apabila dok ktp ada maka dihapus,apabila sebaliknya maka tidak dihapus
+          unlink("upload/".str_replace(" ","_",$dokumen->kode_pelanggan."-".$dokumen->upload_ktp));
+		}   
+		 
+		if($dokumen->upload_npwp != '' || $dokumen->upload_npwp != NULL){
+          //apabila dok npwp ada maka dihapus,apabila sebaliknya maka tidak dihapus
+          unlink("upload/".str_replace(" ","_",$dokumen->kode_pelanggan."-".$dokumen->upload_npwp));
+		}   
+		 
+   
+		if($dokumen->upload_slip_gaji!= '' || $dokumen->upload_slip_gaji != NULL){
+          //apabila dok slip gaji ada maka dihapus,apabila sebaliknya maka tidak dihapus
+          unlink("upload/".str_replace(" ","_",$dokumen->kode_pelanggan."-".$dokumen->upload_slip_gaji));
+		}   
+		  
+   
+		if($dokumen->upload_dok_pendukung != '' || $dokumen->upload_dok_pendukung != NULL){
+          //apabila dok pendukung ada maka dihapus,apabila sebaliknya maka tidak dihapus
+          unlink("upload/".str_replace(" ","_",$dokumen->kode_pelanggan."-".$dokumen->upload_dok_pendukung));
 		}   
 
     $sqlhapus = $this->m_customer->hapus_data($id);
@@ -72,8 +95,7 @@ class Customer extends Parent_Controller {
 	}
 	
   //method atau fungsi yang digunakan untuk menyimpan data dari form,baik saat melakukan simpan maupun ubah data
-	public function simpan_data(){
-    
+	public function simpan_data(){ 
     
     $data_form = $this->m_customer->array_from_post($this->daftar_field);
 
@@ -81,11 +103,12 @@ class Customer extends Parent_Controller {
  
 
     $simpan_data = $this->m_customer->simpan_data_master($data_form,$this->nama_tabel,$this->primary_key,$id);
-    $simpan_foto = $this->upload_foto();
-  
- 
-	
-		if($simpan_data && $simpan_foto){
+    $simpan_ktp = $this->upload_ktp($data_form['kode_pelanggan']);
+	$simpan_npwp = $this->upload_npwp($data_form['kode_pelanggan']);
+	$simpan_slip_gaji = $this->upload_slip_gaji($data_form['kode_pelanggan']);
+	$simpan_dok_pendukung = $this->upload_dok_pendukung($data_form['kode_pelanggan']);
+	 
+		if($simpan_data && $simpan_ktp && $simpan_npwp && $simpan_slip_gaji && $simpan_dok_pendukung){
 			$result = array("response"=>array('message'=>'success'));
 		}else{
 			$result = array("response"=>array('message'=>'failed'));
@@ -95,12 +118,36 @@ class Customer extends Parent_Controller {
 
 	}
 	
-  //method atau fungsi yang digunakan untuk menyimpan foto/gambar dari form dan me return nama file yang baru di upload untuk digunakan saat penyimpanan atau perubahan data foto/gambar
-  function upload_foto(){  
-    if(isset($_FILES["user_image"])){  
-        $extension = explode('.', $_FILES['user_image']['name']);   
-        $destination = './upload/' . $_FILES['user_image']['name'];  
-        return move_uploaded_file($_FILES['user_image']['tmp_name'], $destination);  
+  //method atau fungsi yang digunakan untuk menyimpan dokumen-dokumen dari form dan me return nama file yang baru di upload untuk digunakan saat penyimpanan atau perubahan data dokumenar
+  function upload_ktp($kode_pelanggan){  
+    if(isset($_FILES["user_ktp"])){  
+        $extension = explode('.', $_FILES['user_ktp']['name']);   
+        $destination = './upload/' . $kode_pelanggan.'-'.$_FILES['user_ktp']['name'];  
+        return move_uploaded_file($_FILES['user_ktp']['tmp_name'], $destination);  
+         
+    }  
+  }  
+  function upload_npwp($kode_pelanggan){  
+    if(isset($_FILES["user_npwp"])){  
+        $extension = explode('.', $_FILES['user_npwp']['name']);   
+        $destination = './upload/' . $kode_pelanggan.'-'.$_FILES['user_npwp']['name'];  
+        return move_uploaded_file($_FILES['user_npwp']['tmp_name'], $destination);  
+         
+    }  
+  }  
+  function upload_slip_gaji($kode_pelanggan){  
+    if(isset($_FILES["user_slip_gaji"])){  
+        $extension = explode('.', $_FILES['user_slip_gaji']['name']);   
+        $destination = './upload/' . $kode_pelanggan.'-'.$_FILES['user_slip_gaji']['name'];  
+        return move_uploaded_file($_FILES['user_slip_gaji']['tmp_name'], $destination);  
+         
+    }  
+  }  
+  function upload_dok_pendukung($kode_pelanggan){  
+    if(isset($_FILES["user_dok_pendukung"])){  
+        $extension = explode('.', $_FILES['user_dok_pendukung']['name']);   
+        $destination = './upload/' . $kode_pelanggan.'-'.$_FILES['user_dok_pendukung']['name'];  
+        return move_uploaded_file($_FILES['user_dok_pendukung']['tmp_name'], $destination);  
          
     }  
   }  

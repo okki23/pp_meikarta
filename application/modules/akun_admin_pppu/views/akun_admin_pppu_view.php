@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data Bank
+                                Data Akun Admin PPPU
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -24,11 +24,8 @@
 									<thead>
 										<tr>
 											<th style="width:5%;">No</th>
-                                            <th style="width:5%;">Kode Bank</th> 
-											<th style="width:5%;">Nama Bank</th>
-											<th style="width:5%;">No Rekening</th> 
-											<th style="width:5%;">Jumlah KPA</th> 
-							 
+                                            <th style="width:5%;">Username</th> 
+											<th style="width:5%;">Nama</th> 
 											<th style="width:10%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -58,31 +55,68 @@
                                     <input type="hidden" name="id" id="id"> 
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="kode_bank" id="kode_bank" class="form-control" placeholder="Kode Bank" />
+                                            <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
                                         </div>
                                     </div>
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_bank" id="nama_bank" class="form-control" placeholder="Nama Bank" />
+                                            <span class="label label-danger">* Kosongkan Apabila Tidak Mengganti Password </span>
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" /> 
                                         </div>
                                     </div>
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="no_rekening" id="no_rekening"  class="form-control" placeholder="No Rekening" />
+                                            <div class="input-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nama_adminpppu" id="nama_adminpppu" class="form-control" readonly="readonly" >
+                                                    <input type="hidden" name="id_admin_pppu" id="id_admin_pppu">
+                                                </div>
+                                                <span class="input-group-addon">
+                                                    <button type="button" onclick="CariAdminPPPU();" class="btn btn-primary"> Cari Admin PPPU... </button>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-									<div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="jumlah_kpa" id="jumlah_kpa"  class="form-control" placeholder="Jumlah KPA" />
-                                        </div>
-                                    </div>
-								 
+									 
 
 								   <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
                                    <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal"> <i class="material-icons">clear</i> Batal</button>
 							 </form>
 					   </div>
+                     
+                    </div>
+                </div>
+    </div>
+
+    <!-- modal cari sales -->
+    <div class="modal fade" id="ModalCariAdminPPPU" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" >Cari Admin PPPU</h4>
+                        </div>
+                        <div class="modal-body">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Pilih</button>
+
+                                <br>
+                                <hr>
+
+                                 <table class="table table-bordered table-striped table-hover " id="daftar_adminpppu" >
+  
+                                    <thead>
+                                        <tr> 
+                                            <th style="width:5%;">NIK</th>
+                                            <th style="width:5%;">Nama</th> 
+                                            <th style="width:5%;">No Telp</th> 
+                                            <th style="width:10%;">Email</th> 
+                                        </tr>
+                                    </thead> 
+                                    <tbody id="daftar_adminpppux">
+
+                                </tbody>
+                                </table> 
+                       </div>
                      
                     </div>
                 </div>
@@ -98,34 +132,35 @@
 		$("#defaultModal").modal('show');
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>bank/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>akun_admin_pppu/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
-			 success:function(result){ 
-                  
+			 success:function(result){  
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id);
-                 $("#kode_bank").val(result.kode_bank);
-                 $("#nama_bank").val(result.nama_bank);
-                 $("#no_rekening").val(result.no_rekening);
-				 $("#jumlah_kpa").val(result.jumlah_kpa);
-				 
-                  
+                 $("#username").val(result.username); 
+                 $("#id_admin_pppu").val(result.id_admin_pppu);
+				 $("#nama_adminpppu").val(result.nama); 
 			 }
 		 });
 	 }
  
 	 function Bersihkan_Form(){
         $(':input').val(''); 
-        $("#image1").attr('src','<?php echo base_url('upload/image_prev.jpg'); ?>');
      }
+
+     function CariAdminPPPU(){
+        $("#ModalCariAdminPPPU").modal({backdrop: 'static', keyboard: false,show:true});
+     }
+
+     
 
 	 function Hapus_Data(id){
 		if(confirm('Anda yakin ingin menghapus data ini?'))
         {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo base_url('bank/hapus_data')?>/"+id,
+            url : "<?php echo base_url('akun_admin_pppu/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -152,9 +187,7 @@
     }
 	}
     
-    $("#longok").on("click",function(){
-        alert('1');
-    });
+   
     $('.thumbnail').on('click',function(){
         $('.modal-body').empty();
         var title = $(this).parent('a').attr("title");
@@ -169,33 +202,24 @@
 
           
          //validasi form sebelum submit ke controller
-         var kode_bank = $("#kode_bank").val();
-         var nama_bank = $("#nama_bank").val();
-         var no_rekening = $("#no_rekening").val();
-		 var jumlah_kpa = $("#jumlah_kpa").val();
+         var username = $("#username").val();
+         var nama_sales = $("#nama_sales").val();
+        
           
-         if(kode_bank == ''){
-            alert("Kode Bank Belum anda masukkan!");
-            $("#kode_bank").parents('.form-line').addClass('focused error');
-            $("#kode_bank").focus();
-         }else if(nama_bank == ''){
-            alert("Nama Bank Belum anda masukkan!");
-            $("#nama_bank").parents('.form-line').addClass('focused error');
-            $("#nama_bank").focus();
-         }else if(no_rekening == ''){
-            alert("No Rekening Belum anda masukkan!");
-            $("#no_rekening").parents('.form-line').addClass('focused error');
-            $("#no_rekening").focus();
-		 }else if(jumlah_kpa == ''){
-            alert("Jumlah KPA Belum anda masukkan!");
-            $("#jumlah_kpa").parents('.form-line').addClass('focused error');
-            $("#jumlah_kpa").focus 
-       
+         if(username == ''){
+            alert("Username Belum anda masukkan!");
+            $("#username").parents('.form-line').addClass('focused error');
+            $("#username").focus();
+         }else if(nama_sales == ''){
+            alert("Nama Sales Belum anda masukkan!");
+            $("#nama_sales").parents('.form-line').addClass('focused error');
+            $("#nama_sales").focus();
+         
 		 }else{
 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>bank/simpan_data",
+             url:"<?php echo base_url(); ?>akun_admin_pppu/simpan_data_akun_admin_pppu",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -238,14 +262,25 @@
             $("#defaultModalLabel").html("Form Tambah Data");
 		});
 		
-		$("#addmodalx").on("click",function(){
-			$("#defaultModalx").modal({backdrop: 'static', keyboard: false,show:true});
-            $("#defaultModalLabel").html("Form Tambah Datax");
-		});
-		
+		 
 		$('#example').DataTable( {
-			"ajax": "<?php echo base_url(); ?>bank/fetch_bank" 
+			"ajax": "<?php echo base_url(); ?>akun_admin_pppu/fetch_akun_admin_pppu" 
 		});
+
+        $('#daftar_adminpppu').DataTable( {
+            "ajax": "<?php echo base_url(); ?>akun_admin_pppu/fetch_nama_adminpppu" 
+        });
+
+        var daftar_adminpppu = $('#daftar_adminpppu').DataTable();
+     
+        $('#daftar_adminpppu tbody').on('click', 'tr', function () {
+            //onsole.log(daftar_adminpppu.row(this).data());
+             var content = daftar_adminpppu.row(this).data()
+            
+            $("#nama_adminpppu").val(content[2]);
+            $("#id_admin_pppu").val(content[0]);
+            $("#ModalCariAdminPPPU").modal('hide');
+        } );
 	 
 	 
 		 

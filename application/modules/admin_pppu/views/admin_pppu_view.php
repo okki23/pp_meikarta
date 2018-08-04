@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data Bank
+                                Data Admin PPPU
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -24,11 +24,9 @@
 									<thead>
 										<tr>
 											<th style="width:5%;">No</th>
-                                            <th style="width:5%;">Kode Bank</th> 
-											<th style="width:5%;">Nama Bank</th>
-											<th style="width:5%;">No Rekening</th> 
-											<th style="width:5%;">Jumlah KPA</th> 
-							 
+                                            <th style="width:5%;">NIK</th> 
+											<th style="width:5%;">Nama</th>
+											<th style="width:5%;">No Telp/HP</th>  
 											<th style="width:10%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -58,22 +56,22 @@
                                     <input type="hidden" name="id" id="id"> 
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="kode_bank" id="kode_bank" class="form-control" placeholder="Kode Bank" />
+                                            <input type="text" name="nik" id="nik" class="form-control" placeholder="NIK" />
                                         </div>
                                     </div>
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_bank" id="nama_bank" class="form-control" placeholder="Nama Bank" />
+                                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" />
                                         </div>
                                     </div>
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="no_rekening" id="no_rekening"  class="form-control" placeholder="No Rekening" />
+                                            <input type="text" name="no_telp" id="no_telp"  class="form-control" placeholder="No Telp" />
                                         </div>
                                     </div>
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="jumlah_kpa" id="jumlah_kpa"  class="form-control" placeholder="Jumlah KPA" />
+                                            <input type="text" name="email" id="email"  class="form-control" placeholder="Email" />
                                         </div>
                                     </div>
 								 
@@ -98,26 +96,22 @@
 		$("#defaultModal").modal('show');
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>bank/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>admin_pppu/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
-			 success:function(result){ 
-                  
+			 success:function(result){  
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id);
-                 $("#kode_bank").val(result.kode_bank);
-                 $("#nama_bank").val(result.nama_bank);
-                 $("#no_rekening").val(result.no_rekening);
-				 $("#jumlah_kpa").val(result.jumlah_kpa);
-				 
-                  
+                 $("#nik").val(result.nik);
+                 $("#nama").val(result.nama);
+                 $("#no_telp").val(result.no_telp);
+				 $("#email").val(result.email); 
 			 }
 		 });
 	 }
  
 	 function Bersihkan_Form(){
         $(':input').val(''); 
-        $("#image1").attr('src','<?php echo base_url('upload/image_prev.jpg'); ?>');
      }
 
 	 function Hapus_Data(id){
@@ -125,7 +119,7 @@
         {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo base_url('bank/hapus_data')?>/"+id,
+            url : "<?php echo base_url('admin_pppu/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -152,9 +146,7 @@
     }
 	}
     
-    $("#longok").on("click",function(){
-        alert('1');
-    });
+   
     $('.thumbnail').on('click',function(){
         $('.modal-body').empty();
         var title = $(this).parent('a').attr("title");
@@ -169,33 +161,33 @@
 
           
          //validasi form sebelum submit ke controller
-         var kode_bank = $("#kode_bank").val();
-         var nama_bank = $("#nama_bank").val();
-         var no_rekening = $("#no_rekening").val();
-		 var jumlah_kpa = $("#jumlah_kpa").val();
+         var nik = $("#nik").val();
+         var nama = $("#nik").val();
+         var no_telp = $("#no_telp").val();
+		 var email = $("#email").val();
           
-         if(kode_bank == ''){
-            alert("Kode Bank Belum anda masukkan!");
-            $("#kode_bank").parents('.form-line').addClass('focused error');
-            $("#kode_bank").focus();
-         }else if(nama_bank == ''){
-            alert("Nama Bank Belum anda masukkan!");
-            $("#nama_bank").parents('.form-line').addClass('focused error');
-            $("#nama_bank").focus();
-         }else if(no_rekening == ''){
-            alert("No Rekening Belum anda masukkan!");
-            $("#no_rekening").parents('.form-line').addClass('focused error');
-            $("#no_rekening").focus();
-		 }else if(jumlah_kpa == ''){
-            alert("Jumlah KPA Belum anda masukkan!");
-            $("#jumlah_kpa").parents('.form-line').addClass('focused error');
-            $("#jumlah_kpa").focus 
+         if(nik == ''){
+            alert("NIK admin_pppu Belum anda masukkan!");
+            $("#nik").parents('.form-line').addClass('focused error');
+            $("#nik").focus();
+         }else if(nama == ''){
+            alert("Nama Belum anda masukkan!");
+            $("#nama").parents('.form-line').addClass('focused error');
+            $("#nama").focus();
+         }else if(no_telp == ''){
+            alert("No Telp Belum anda masukkan!");
+            $("#no_telp").parents('.form-line').addClass('focused error');
+            $("#no_telp").focus();
+		 }else if(email == ''){
+            alert("Email Belum anda masukkan!");
+            $("#email").parents('.form-line').addClass('focused error');
+            $("#email").focus 
        
 		 }else{
 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>bank/simpan_data",
+             url:"<?php echo base_url(); ?>admin_pppu/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -238,13 +230,9 @@
             $("#defaultModalLabel").html("Form Tambah Data");
 		});
 		
-		$("#addmodalx").on("click",function(){
-			$("#defaultModalx").modal({backdrop: 'static', keyboard: false,show:true});
-            $("#defaultModalLabel").html("Form Tambah Datax");
-		});
-		
+		 
 		$('#example').DataTable( {
-			"ajax": "<?php echo base_url(); ?>bank/fetch_bank" 
+			"ajax": "<?php echo base_url(); ?>admin_pppu/fetch_admin_pppu" 
 		});
 	 
 	 

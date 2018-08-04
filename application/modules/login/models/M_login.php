@@ -12,8 +12,15 @@ class M_login extends Parent_Model {
   digunakan sewaktu waktu tanpa harus menulis ulang
   */
 
-  var $nama_tabel = 'm_user';
-  var $daftar_field = array('id','id_user','username','password','user_insert','date_insert','user_update','date_update');
+  var $nama_tabel_sales = 'm_akun_sales';
+  var $daftar_field_sales = array( 'id', 'username', 'password', 'id_sales', 'user_insert', 'date_insert', 'user_update', 'date_update');
+  
+  var $nama_tabel_admin_pppu = 'm_akun_admin_pppu';
+  var $daftar_field_admin_pppu = array('id', 'username', 'password', 'id_admin_pppu', 'user_insert', 'date_insert', 'user_update', 'date_update');
+  
+  var $nama_tabel_superadmin = 'm_akun_superadmin';
+  var $daftar_field_superadmin = array('id', 'username', 'password', 'user_insert', 'date_insert', 'user_update', 'date_update');
+  
   var $primary_key = 'id';
 
 	  
@@ -22,8 +29,16 @@ class M_login extends Parent_Model {
         $this->load->database();
 	}
 
-	public function autentikasi($username,$password){
-        $sql = $this->db->get_where($this->nama_tabel,array('username'=>$username,'password'=>$password));
+	public function autentikasi_sales($username,$password){
+        $sql = $this->db->get_where($this->nama_tabel_sales,array('username'=>$username,'password'=>$password));
+		return $sql;
+	}
+	public function autentikasi_admin_pppu($username,$password){
+        $sql = $this->db->get_where($this->nama_tabel_admin_pppu,array('username'=>$username,'password'=>$password));
+		return $sql;
+	}
+	public function autentikasi_superadmin($username,$password){
+        $sql = $this->db->get_where($this->nama_tabel_superadmin,array('username'=>$username,'password'=>$password));
 		return $sql;
 	}
  
