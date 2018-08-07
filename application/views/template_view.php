@@ -71,6 +71,11 @@
     <script src="<?php echo base_url(); ?>assets/plugins/momentjs/moment.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>   
     <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
+ 
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-validation/jquery.validate.js"></script>
+ 
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-steps/jquery.steps.js"></script>
+	<script src="<?php echo base_url(); ?>js/pages/forms/form-wizard.js"></script>
 	 
 </head>
 

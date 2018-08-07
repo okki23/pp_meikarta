@@ -11,7 +11,7 @@
  Target Server Version : 100132
  File Encoding         : 65001
 
- Date: 05/08/2018 02:38:26
+ Date: 06/08/2018 10:09:31
 */
 
 SET NAMES utf8mb4;
@@ -118,12 +118,14 @@ CREATE TABLE `m_bank`  (
   `user_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `date_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_bank
 -- ----------------------------
 INSERT INTO `m_bank` VALUES (2, '0086', 'Mandiri Syariah', '9876578923427345', '2', NULL, NULL, 'admin', '2018-08-03 11:58:31');
+INSERT INTO `m_bank` VALUES (3, '012', 'BCA', '989378432', '3', 'admin', '2018-08-05 06:47:24', NULL, NULL);
+INSERT INTO `m_bank` VALUES (4, '087', 'CIMB', '9742343243734', '2.5', 'admin', '2018-08-05 06:48:45', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for m_customer
@@ -149,12 +151,13 @@ CREATE TABLE `m_customer`  (
   `user_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `date_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_customer
 -- ----------------------------
 INSERT INTO `m_customer` VALUES (8, 'KP84455', 'Karlina', 'Tegal', '1993-10-01', '087889677228', '0218978675', '0218786778', 'karlinamaksum19@gmail.com', 'Jl.Notog Pintu', 'da.txt', 'db.txt', 'dc.txt', 'dd.txt', 'admin', '2018-08-03 16:09:06', NULL, NULL);
+INSERT INTO `m_customer` VALUES (9, 'KP62033', 'Okki S', 'Jakarta', '1993-10-01', '0831631131', '021882647', '0217843635', 'okkisetyawan@gmail.com', 'Jl.Nangka', 'dataa.pdf', 'datab.pdf', 'datac.pdf', 'datad.pdf', 'admin', '2018-08-05 06:27:11', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for m_sales

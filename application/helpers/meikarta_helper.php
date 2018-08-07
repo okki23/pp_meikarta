@@ -37,8 +37,18 @@ function generate_kode_pelanggan($params){
     return $string;
 }
 
-function generate_ttbf(){
-    $karakter= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
+function generate_no_pu($params){
+    $karakter= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
+    $string = '';
+    for ($i = 0; $i < $params; $i++) {
+        $pos = rand(0, strlen($karakter)-1);
+        $string .= $karakter{$pos};
+    }
+    return $string;
+}
+
+function generate_ttbf($params){
+    $karakter= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
     $string = '';
     for ($i = 0; $i < $params; $i++) {
         $pos = rand(0, strlen($karakter)-1);

@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data Unit
+                                Data booking_fee
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -24,7 +24,7 @@
 										<tr>
 											<th style="width:5%;">No</th>
                                             <th style="width:5%;">Blok Tower</th>  
-											<th style="width:5%;">Unit</th>  
+											<th style="width:5%;">booking_fee</th>  
 											<th style="width:5%;">Tipe</th> 
 											<th style="width:5%;">Harga</th> 
 											<th style="width:15%;">Opsi</th> 
@@ -76,7 +76,7 @@
                                     </div>
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="no_unit" id="no_unit" class="form-control" placeholder="No Unit" />
+                                            <input type="text" name="no_booking_fee" id="no_booking_fee" class="form-control" placeholder="No booking_fee" />
                                         </div>
                                     </div> 
 									<div class="form-group">
@@ -112,7 +112,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Detail Unit</h4>
+                            <h4 class="modal-title">Detail booking_fee</h4>
                         </div>
                         <div class="modal-body">
 						
@@ -136,9 +136,9 @@
 								<td> <p id="luas_dtl"> </p> </td> 
 							</tr>
 							<tr>
-								<td style="font-weight:bold;"> No Unit</td>
+								<td style="font-weight:bold;"> No booking_fee</td>
 								<td> : </td>
-								<td> <p id="no_unit_dtl"> </p> </td>
+								<td> <p id="no_booking_fee_dtl"> </p> </td>
 								
 								<td style="font-weight:bold;"> Harga </td>
 								<td> : </td>
@@ -146,12 +146,12 @@
 							</tr>
 							 
 							<tr>
-								<td style="font-weight:bold;"> Foto Unit  </td> 
+								<td style="font-weight:bold;"> Foto booking_fee  </td> 
 								<td colspan="4">  : </td> 
 							</tr> 
 							<tr>
 								<td colspan="6" align="center">  
-								<img src="" class="img responsive" id="foto_unit_dtl">
+								<img src="" class="img responsive" id="foto_booking_fee_dtl">
 								</td>
 							</tr>
 						 
@@ -184,18 +184,18 @@
 	 function Show_Detail(id){ 
 		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
 		$.ajax({
-			 url:"<?php echo base_url(); ?>unit/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>booking_fee/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){  
 			 
                  $("#blok_tower_dtl").html(result.blok_tower);
                  $("#tipe_dtl").html(result.tipe);
-                 $("#no_unit_dtl").html(result.no_unit); 
+                 $("#no_booking_fee_dtl").html(result.no_booking_fee); 
 				 $("#lantai_dtl").html(result.lantai); 
 				 $("#harga_dtl").html(result.harga);
 				 $("#luas_dtl").html(result.luas);
-				 $("#foto_unit_dtl").attr("src","upload/"+result.foto);
+				 $("#foto_booking_fee_dtl").attr("src","upload/"+result.foto);
 				 
 				 
 				 
@@ -208,7 +208,7 @@
 		$("#defaultModal").modal('show');
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>unit/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>booking_fee/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){ 
@@ -217,7 +217,7 @@
 				 $("#id").val(result.id);
                  $("#tipe").val(result.tipe);
                  $("#lantai").val(result.lantai);
-                 $("#no_unit").val(result.no_unit);
+                 $("#no_booking_fee").val(result.no_booking_fee);
 				 $("#foto").val(result.foto);
 				 $("#blok_tower").val(result.blok_tower);
                  $("#luas").val(result.luas);
@@ -238,7 +238,7 @@
         {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo base_url('unit/hapus_data')?>/"+id,
+            url : "<?php echo base_url('booking_fee/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -265,9 +265,7 @@
     }
 	}
     
-    $("#longok").on("click",function(){
-        alert('1');
-    });
+ 
     $('.thumbnail').on('click',function(){
         $('.modal-body').empty();
         var title = $(this).parent('a').attr("title");
@@ -289,7 +287,7 @@
          //validasi form sebelum submit ke controller
          var tipe = $("#tipe").val();
          var lantai = $("#lantai").val();
-         var no_unit = $("#no_unit").val();
+         var no_booking_fee = $("#no_booking_fee").val();
 		 var blok_tower = $("#blok_tower").val();
          var harga = $("#harga").val();
          var luas = $("#luas").val();
@@ -310,10 +308,10 @@
             alert("Luas Belum anda masukkan!");
             $("#luas").parents('.form-line').addClass('focused error');
             $("#luas").focus();
-		 }else if(no_unit == ''){
-            alert("No Unit Belum anda masukkan!");
-            $("#no_unit").parents('.form-line').addClass('focused error');
-            $("#no_unit").focus();
+		 }else if(no_booking_fee == ''){
+            alert("No booking_fee Belum anda masukkan!");
+            $("#no_booking_fee").parents('.form-line').addClass('focused error');
+            $("#no_booking_fee").focus();
 		 }else if(harga == ''){
             alert("Harga Belum anda masukkan!");
             $("#harga").parents('.form-line').addClass('focused error');
@@ -328,7 +326,7 @@
 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>unit/simpan_data",
+             url:"<?php echo base_url(); ?>booking_fee/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -375,7 +373,7 @@
 		});
 		
 		$('#example').DataTable( {
-			"ajax": "<?php echo base_url(); ?>unit/fetch_unit" 
+			"ajax": "<?php echo base_url(); ?>booking_fee/fetch_booking_fee" 
 		});
 	 
 	 
