@@ -13,7 +13,7 @@ class Pu extends Parent_Controller {
   digunakan sewaktu waktu tanpa harus menulis ulang
   */
   var $nama_tabel = 't_pu';
-  var $daftar_field = array('id', 'id_customer', 'id_sales', 'id_bank', 'id_bf', 'id_unit', 'cicilan', 'date_assign', 'user_assign');
+  var $daftar_field = array('id', 'no_pu','id_customer', 'id_sales', 'id_bank', 'id_bf', 'id_unit', 'cicilan', 'date_assign', 'user_assign');
   var $primary_key = 'id';
  
   //method construct dijalankan pertama kali dan terus berjalan selama class digunakan
@@ -73,6 +73,17 @@ class Pu extends Parent_Controller {
        echo json_encode($getdata);   
   	}  
 
+  	public function fetch_nama_unit(){  
+       $getdata = $this->m_pu->fetch_nama_unit();
+       echo json_encode($getdata);   
+  	}  
+
+
+	public function fetch_nama_bank(){  
+       $getdata = $this->m_pu->fetch_nama_bank();
+       echo json_encode($getdata);   
+  	}  
+
 	
   //method yang digunakan untuk menarik id dari data yang dituju untuk diambil datanya dengan query kemudian di parse kedalam form edit data
 	public function get_data_edit(){
@@ -88,12 +99,7 @@ class Pu extends Parent_Controller {
 	public function hapus_data(){
 		$id = $this->uri->segment(3);  
     //cek apakah foto/gambar tersedia
-		$cek_foto = $this->db->where($this->primary_key,$id)->get($this->nama_tabel)->row(); 
-   
-		if($cek_foto->upload_bukti_transfer != '' || $cek_foto->upload_bukti_transfer != NULL){
-          //apabila foto ada maka dihapus,apabila sebaliknya maka tidak dihapus
-          unlink("upload/".str_replace(" ","_",$cek_foto->upload_bukti_transfer));
-		}   
+		 
 
     $sqlhapus = $this->m_pu->hapus_data($id);
 		
@@ -111,40 +117,34 @@ class Pu extends Parent_Controller {
     
     
     $data_form = $this->m_pu->array_from_post($this->daftar_field);
-
+ 	// var_dump($data_form);
+ 	// exit();
     //$id = isset($data_form['id']) ? $data_form['id'] : NULL; 
  
-
-    //$simpan_data = $this->m_pu->simpan_data_master($data_form,$this->nama_tabel,$this->primary_key,$id);
-
-    $simpan = $this->db->query("insert into t_pu set kode_ttbf = '".$data_form['kode_ttbf']."',priority_code = '".$data_form['priority_code']."',id_sales = '".$data_form['id_sales']."',id_customer = '".$data_form['id_customer']."', date_assign = '".date('Y-m-d H:i:s')."', upload_bukti_transfer = '".$data_form['upload_bukti_transfer']."' ");
-
-
-    $simpan_foto = $this->upload_foto();
-  	var_dump($simpan);
-  	exit();
  
-	
-		// if($simpan_data && $simpan_foto){
-		// 	$result = array("response"=>array('message'=>'success'));
-		// }else{
-		// 	$result = array("response"=>array('message'=>'failed'));
-		// }
+
+    $simpan = $this->db->query("insert into t_pu set id_customer = '".$data_form['id_customer']."',
+    							no_pu = '".$data_form['no_pu']."',
+								id_sales  = '".$data_form['id_sales']."',
+								id_bank  = '".$data_form['id_bank']."',
+								id_bf  = '".$data_form['id_bf']."',
+								id_unit  = '".$data_form['id_unit']."',
+								cicilan  = '".$data_form['cicilan']."',
+								date_assign  = '".date('Y-m-d')."',
+								user_assign  = '".$this->session->userdata('username')."' ");
+								 
+ 
+		if($simpan_data){
+			$result = array("response"=>array('message'=>'success'));
+		}else{
+			$result = array("response"=>array('message'=>'failed'));
+		}
 		
-		// echo json_encode($result,TRUE);
+		echo json_encode($result,TRUE);
 
 	}
 	
-  //method atau fungsi yang digunakan untuk menyimpan foto/gambar dari form dan me return nama file yang baru di upload untuk digunakan saat penyimpanan atau perubahan data foto/gambar
-  function upload_foto(){  
-    if(isset($_FILES["user_bukti"])){  
-        $extension = explode('.', $_FILES['user_bukti']['name']);   
-        $destination = './upload/' . $_FILES['user_bukti']['name'];  
-        return move_uploaded_file($_FILES['user_bukti']['tmp_name'], $destination);  
-         
-    }  
-  }  
-       
+  
 
 
 }

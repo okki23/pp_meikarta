@@ -45,7 +45,7 @@
    
 	<!-- form tambah dan ubah data -->
 	<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="defaultModalLabel">Form Tambah Data</h4>
@@ -55,11 +55,8 @@
                                 
                                     <input type="hidden" name="id" id="id"> 
                                     <input type="hidden" name="priority_code" id="priority_code" class="form-control" readonly="readonly"/>
-                                    <input type="text" name="email" id="email" class="form-control" readonly="readonly"/>
-
 									<div class="form-group">
                                         <div class="form-line">
-                                              <b> Kode TTBF </b>
                                             <input type="text" name="kode_ttbf" id="kode_ttbf" class="form-control" readonly="readonly" />
                                         </div>
                                     </div>
@@ -117,7 +114,7 @@
  
     <!-- modal cari customer -->
     <div class="modal fade" id="CariCustomerModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" >Cari Customer</h4>
@@ -151,7 +148,7 @@
 
     <!-- modal cari sales -->
     <div class="modal fade" id="CariSalesModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" >Cari Sales</h4>
@@ -185,7 +182,7 @@
 
     <!-- detail data customer -->
     <div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Detail Booking Fee</h4>
@@ -218,7 +215,7 @@
                             </tr> 
                             <tr>
                                 <td colspan="6" align="center">  
-                                <img src="" width="100%" class="img responsive" id="upload_bukti_transfer_dtl">
+                                <img src="" width="50%" class="img responsive" id="upload_bukti_transfer_dtl">
                                 </td>
                             </tr>
                          
@@ -455,7 +452,6 @@
             console.log(content);
 
             $("#nama_customer").val(content[2]);
-            $("#email").val(content[3]);
             $("#id_customer").val(content[0]);
             $("#CariCustomerModal").modal('hide');
         } );

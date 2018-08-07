@@ -4234,6 +4234,10 @@ section.content {
     font-size: 17px; }
 
 /* Modals ====================================== */
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
 .modal .modal-header {
   border: none;
   padding: 25px 25px 5px 25px; }

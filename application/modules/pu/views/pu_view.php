@@ -26,8 +26,7 @@
                                             <th style="width:5%;">Kode PU</th>  
 											<th style="width:5%;">Customer</th>  
 											<th style="width:5%;">Blok Tower</th> 
-											<th style="width:5%;">Lantai</th> 
-											<th style="width:5%;">No Unit</th> 
+										 
 											<th style="width:15%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -57,7 +56,7 @@
                         <div class="modal-body">
 						
 						
-						<form id="wizard_with_validation" method="POST" >
+						<form id="wizard_with_validation" class="user_form" method="POST" >
                                 <h3>Periksa Priority Code</h3>
                                 <fieldset>
                                     <div class="form-group">
@@ -103,7 +102,7 @@
 											<b>Nama Customer</b>
       
                                                     <input type="text" name="nama_customer" id="nama_customer" class="form-control" required readonly="readonly" >
-                                                    <input type="text" name="id_customer" id="id_customer" required>
+                                                    <input type="hidden" name="id_customer" id="id_customer" required>
 													<button type="button" onclick="CariCustomer();" class="btn btn-primary"> Cari Customer... </button>
                                             </div>
                                            
@@ -113,56 +112,46 @@
 											<b>Nama Sales</b>
       
                                                     <input type="text" name="nama_sales" id="nama_sales" class="form-control" required readonly="readonly" >
-                                                    <input type="text" name="id_sales" id="id_sales" required>
-													<button type="button" onclick="CariSales();" class="btn btn-primary"> Cari Customer... </button>
+                                                    <input type="hidden" name="id_sales" id="id_sales" required>
+													<button type="button" onclick="CariSales();" class="btn btn-primary"> Cari Sales... </button>
+                                            </div>
+                                           
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <b>Unit</b>
+      
+                                                    <input type="text" name="nama_unit" id="nama_unit" class="form-control" required readonly="readonly" >
+                                                    <input type="hidden" name="id_unit" id="id_unit" required>
+                                                    <button type="button" onclick="CariUnit();" class="btn btn-primary"> Cari Unit... </button>
+                                            </div>
+                                           
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <b>Bank</b>
+      
+                                                    <input type="text" name="nama_bank" id="nama_bank" class="form-control" required readonly="readonly" >
+                                                    <input type="hidden" name="id_bank" id="id_bank" required>
+                                                    <button type="button" onclick="CariBank();" class="btn btn-primary"> Cari Bank... </button>
                                             </div>
                                            
                                     </div>
                                  
-                                    <div class="form-group form-float">
-											<div class="form-line">
-                                                    <input type="text" name="priority_code" id="priority_code" class="form-control" required readonly="readonly" >
-                                                    <input type="hidden" name="id_bf" id="id_bf" required>
-                                            </div>
-                                            <span class="input-group-addon">
-                                                    <button type="button" onclick="CariCustomer();" class="btn btn-primary"> Cari Customer... </button>
-                                            </span>
-                                    </div>
-                                    <div class="form-group form-float">
-											<div class="form-line">
-                                                    <input type="text" name="priority_code" id="priority_code" class="form-control" required readonly="readonly" >
-                                                    <input type="hidden" name="id_bf" id="id_bf" required>
-                                            </div>
-                                            <span class="input-group-addon">
-                                                    <button type="button" onclick="CariSales();" class="btn btn-primary"> Cari Sales ... </button>
-                                            </span>
-                                    </div>
-                                    <div class="form-group form-float">
-											<div class="form-line">
-                                                    <input type="text" name="priority_code" id="priority_code" class="form-control" required readonly="readonly" >
-                                                    <input type="hidden" name="id_bf" id="id_bf" required>
-                                            </div>
-                                            <span class="input-group-addon">
-                                                    <button type="button" onclick="CariUnit();" class="btn btn-primary"> Cari Sales ... </button>
-                                            </span>
-                                    </div>
+                                   
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input min="18" type="number" name="age" class="form-control" required>
-                                            <label class="form-label">Cicilan</label>
+                                             <b>Cicilan</b>
+                                             <div class="input-group">
+                                             <input name="cicilan" type="radio" id="radio_1" value="12" required="required"  />
+                                             <label for="radio_1">12x</label>
+                                             <input name="cicilan" type="radio" id="radio_2" value="24" required="required" />
+                                             <label for="radio_2">24x</label> 
+                                            </div>
+                                         
                                         </div> 
                                     </div>
-									<div class="form-group form-float">
-										<div class="form-line">
-                                            <input type="text" name="priority_code" id="priority_code" class="form-control" required readonly="readonly" >
-                                            <input type="hidden" name="id_bf" id="id_bf" required>
-                                        </div>
-										<span class="input-group-addon">
-                                            <button type="button" onclick="CariBank();" class="btn btn-primary"> Cari Bank ... </button>
-                                        </span>	
-									  
-									  
-                                    </div>
+									 
                                 </fieldset>
 
                                 <h3>Syarat dan Ketentuan - Selesai </h3>
@@ -285,12 +274,82 @@
                 </div>
     </div>
 
+     <!-- modal cari unit -->
+    <div class="modal fade" id="CariUnitModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" >Cari Unit</h4>
+                        </div>
+                        <div class="modal-body">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
+
+                                <br>
+                                <hr>
+
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_unit" >
+  
+                                    <thead>
+                                        <tr> 
+                                            <th style="width:5%;"></th>
+                                            <th style="width:5%;">Blok Tower</th>
+                                            <th style="width:5%;">Lantai</th> 
+                                            <th style="width:5%;">No Unit</th> 
+                                            <th style="width:10%;">Luas</th> 
+                                            <th style="width:10%;">Tipe</th> 
+                                        </tr>
+                                    </thead> 
+                                    <tbody id="daftar_unitx">
+
+                                </tbody>
+                                </table> 
+                       </div>
+                     
+                    </div>
+                </div>
+    </div>
+
+     <!-- modal cari unit -->
+    <div class="modal fade" id="CariBankModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" >Cari Bank</h4>
+                        </div>
+                        <div class="modal-body">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
+
+                                <br>
+                                <hr>
+
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_bank" >
+  
+                                    <thead>
+                                        <tr> 
+                              
+                                            <th style="width:5%;">Kode Bank</th>
+                                            <th style="width:5%;">Nama Bank</th> 
+                                            <th style="width:5%;">No Rekening</th> 
+                                            <th style="width:10%;">Jumlah KPA</th> 
+                                            <th style="width:10%;">Tipe</th> 
+                                        </tr>
+                                    </thead> 
+                                    <tbody id="daftar_bankx">
+
+                                </tbody>
+                                </table> 
+                       </div>
+                     
+                    </div>
+                </div>
+    </div>
+
     <!-- detail data customer -->
     <div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Detail Booking Fee</h4>
+                            <h4 class="modal-title">Detail PU</h4>
                         </div>
                         <div class="modal-body">
                         
@@ -353,9 +412,18 @@
     function CariCustomer(){
         $("#CariCustomerModal").modal({backdrop: 'static', keyboard: false,show:true});
     }
+
+    function CariUnit(){
+        $("#CariUnitModal").modal({backdrop: 'static', keyboard: false,show:true});
+    }
+
+     function CariBank(){
+        $("#CariBankModal").modal({backdrop: 'static', keyboard: false,show:true});
+    }
 	
 	function CariPriorityCode(){
         $("#CariPriorityCodeModal").modal({backdrop: 'static', keyboard: false,show:true});
+        $('#daftar_prioritycode').DataTable().ajax.reload(); 
     }
 
     function CariSales(){
@@ -416,6 +484,7 @@
      }
 
 	 function Hapus_Data(id){
+        console.log(id);
 		if(confirm('Anda yakin ingin menghapus data ini?'))
         {
         // ajax delete data to database
@@ -457,32 +526,45 @@
   
 	function Simpan_Data(){
 		//setting semua data dalam form dijadikan 1 variabel 
-		 var formData = new FormData($('#user_form')[0]); 
-
-         //validasi tipe file anda sebelum submit ke controller
-         
-         var upload_bukti_transfer = $('#upload_bukti_transfer').val();
-		 var extension = $('#upload_bukti_transfer').val().split('.').pop().toLowerCase();  
- 
+		 var formData = new FormData($('.user_form')[0]); 
  
          //validasi form sebelum submit ke controller
-         var id_customer = $("#tipe").val();
-         var id_sales = $("#lantai").val();
-         var upload_bukti_transfer = $("#no_pu").val();
+         var id_sales = $("#id_sales").val();
+         var id_customer = $("#id_customer").val();
+         var id_bank = $("#id_bank").val();
+         var id_bf = $("#id_bf").val();
+         var id_unit = $("#id_unit").val();
+         var no_pu = $("#no_pu").val();
+         var cicilan = $("#cicilan").val();
 		 
          if(id_customer == ''){
-            alert("Blok Tower Belum anda masukkan!");
-            $("#blok_tower").parents('.form-line').addClass('focused error');
-            $("#blok_tower").focus();
+            alert("Nama Customer Belum anda masukkan!");
+            $("#id_customer").parents('.form-line').addClass('focused error');
+            $("#id_customer").focus();
          }else if(id_sales == ''){
-            alert("Tipe Belum anda masukkan!");
-            $("#tipe").parents('.form-line').addClass('focused error');
-            $("#tipe").focus();
+            alert("Nama Sales Belum anda masukkan!");
+            $("#id_sales").parents('.form-line').addClass('focused error');
+            $("#id_sales").focus();
          	alert('Anda Belum Unggah Foto!');
-		 }else if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1){
-			alert("Format File yang diizinkan adalah JPEG,GIF,PNG,JPG !");  
-            $('#user_image').val('');  
-            return false;  
+		 }else if(id_unit == ''){
+            alert("Unit Belum anda masukkan!");
+            $("#id_unit").parents('.form-line').addClass('focused error');
+            $("#id_unit").focus();
+            alert('Anda Belum Unggah Foto!');
+         }else if(id_bank == ''){
+            alert("Bank Belum anda masukkan!");
+            $("#id_bank").parents('.form-line').addClass('focused error');
+            $("#id_bank").focus();
+            alert('Anda Belum Unggah Foto!');
+         }else if(cicilan == ''){
+            alert("Cicilan Belum anda masukkan!");
+            $("#cicilan").parents('.form-line').addClass('focused error');
+            $("#cicilan").focus();
+         }else if(cicilan == ''){
+            alert("Cicilan Belum anda masukkan!");
+            $("#cicilan").parents('.form-line').addClass('focused error');
+            $("#cicilan").focus();
+            
 		 }else{
 
             //transaksi dibelakang layar
@@ -496,8 +578,8 @@
                 
                  $("#defaultModal").modal('hide');
                  $('#example').DataTable().ajax.reload(); 
-                 $('#user_form')[0].reset();
-                 $("#image1").attr("src","<?php echo base_url(); ?>/upload/image_prev.jpg");
+                 $('.user_form')[0].reset();
+                 
                  $.notify("Data berhasil disimpan!", {
                     animate: {
                         enter: 'animated fadeInRight',
@@ -529,16 +611,11 @@
 			$("#ceklis").hide();
 			$("#kode_ttbf").prop("readonly",true);
             $.get("<?php echo base_url('pu/generate_no_pu');?>",function(data){
-            $("#no_pu").val(data);
+                  $("#no_pu").val(data);
             });
-           /*  $("#kode_ttbf").prop("readonly",true);
-            $.get("<?php echo base_url('pu/generate_ttbf');?>",function(data){
-               $("#kode_ttbf").val(data);
-            });
-
-            $.get("<?php echo base_url('pu/generate_priority_code');?>",function(datax){
-               $("#priority_code").val(datax);
-            }); */
+          //  $('#wizard_with_validation').bootstrapWizard('show',0); 
+          $("#wizard_with_validation").steps("setStep", 0); 
+        
 		});
 		
 	 
@@ -554,8 +631,17 @@
         $('#daftar_sales').DataTable( {
             "ajax": "<?php echo base_url(); ?>pu/fetch_nama_sales" 
         });
+
+        $('#daftar_unit').DataTable( {
+            "ajax": "<?php echo base_url(); ?>pu/fetch_nama_unit" 
+        });
+
+         $('#daftar_bank').DataTable( {
+            "ajax": "<?php echo base_url(); ?>pu/fetch_nama_bank" 
+        });
 		
 		$('#daftar_prioritycode').DataTable( {
+
             "ajax": "<?php echo base_url(); ?>pu/get_priority_code_assign" 
         });
 
@@ -578,9 +664,33 @@
             var content = daftar_sales.row(this).data()
             console.log(content);
 
-            $("#nama_sales").val(content[0]);
-            $("#id_sales").val(content[2]);
+            $("#nama_sales").val(content[2]);
+            $("#id_sales").val(content[0]);
             $("#CariSalesModal").modal('hide');
+        } );
+
+        var daftar_unit = $('#daftar_unit').DataTable();
+     
+        $('#daftar_unit tbody').on('click', 'tr', function () {
+            
+            var content = daftar_unit.row(this).data()
+            console.log(content);
+
+            $("#nama_unit").val("Blok Tower : "+content[1]+" Lantai : "+content[2]+" No Unit : "+content[3]+ " Luas : "+content[4]+ " Tipe : "+content[5] );
+            $("#id_unit").val(content[0]);
+            $("#CariUnitModal").modal('hide');
+        } );
+
+        var daftar_bank = $('#daftar_bank').DataTable();
+     
+        $('#daftar_bank tbody').on('click', 'tr', function () {
+            
+            var content = daftar_bank.row(this).data()
+            console.log(content);
+
+            $("#nama_bank").val(content[2]);
+            $("#id_bank").val(content[0]);
+            $("#CariBankModal").modal('hide');
         } );
 		
 		var daftar_prioritycode = $('#daftar_prioritycode').DataTable();
@@ -593,12 +703,11 @@
             $("#id_bf").val(content[0]);
             $("#priority_code").val(content[2]);
 			$("#ceklis").show();
+
             $("#CariPriorityCodeModal").modal('hide');
 			
         } );
-     
-	 
-	 
+      
 		 
 	  });
   

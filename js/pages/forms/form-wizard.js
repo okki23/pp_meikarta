@@ -62,7 +62,27 @@ $(function () {
             return form.valid();
         },
         onFinished: function (event, currentIndex) {
-            swal("Good job!", "Submitted!", "success");
+             var formData = new FormData($('.user_form')[0]); 
+             $.ajax({
+             url:"pu/simpan_data",
+             type:"POST",
+             data:formData,
+             contentType:false,  
+             processData:false,   
+             success:function(result){ 
+                
+                 $("#defaultModal").modal('hide');
+                 $('#example').DataTable().ajax.reload(); 
+                 $('.user_form')[0].reset();
+                
+                 $.notify("Data berhasil disimpan!", {
+                    animate: {
+                        enter: 'animated fadeInRight',
+                        exit: 'animated fadeOutRight'
+                 } 
+                 } );
+             }
+            }); 
         }
     });
 
@@ -88,3 +108,16 @@ function setButtonWavesEffect(event) {
     $(event.currentTarget).find('[role="menu"] li a').removeClass('waves-effect');
     $(event.currentTarget).find('[role="menu"] li:not(.disabled) a').addClass('waves-effect');
 }
+
+$.fn.steps.setStep = function (step)
+{
+  var currentIndex = $(this).steps('getCurrentIndex');
+  for(var i = 0; i < Math.abs(step - currentIndex); i++){
+    if(step > currentIndex) {
+      $(this).steps('next');
+    }
+    else{
+      $(this).steps('previous');
+    }
+  } 
+};
