@@ -134,7 +134,7 @@ class Pu extends Parent_Controller {
 								user_assign  = '".$this->session->userdata('username')."' ");
 								 
  
-		if($simpan_data){
+		if($simpan){
 			$result = array("response"=>array('message'=>'success'));
 		}else{
 			$result = array("response"=>array('message'=>'failed'));

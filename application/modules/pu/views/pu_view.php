@@ -140,16 +140,14 @@
                                  
                                    
                                     <div class="form-group form-float">
-                                        <div class="form-line">
-                                             <b>Cicilan</b>
-                                             <div class="input-group">
-                                             <input name="cicilan" type="radio" id="radio_1" value="12" required="required"  />
-                                             <label for="radio_1">12x</label>
-                                             <input name="cicilan" type="radio" id="radio_2" value="24" required="required" />
-                                             <label for="radio_2">24x</label> 
-                                            </div>
+                                        
+
+                                              <div class="form-line">
+                                                      <b>Cicilan</b>
+                                                    <input type="text" name="cicilan" id="cicilan" class="form-control" required placeholder="12 atau 24"  > 
+                                             </div>
+
                                          
-                                        </div> 
                                     </div>
 									 
                                 </fieldset>
@@ -560,11 +558,7 @@
             alert("Cicilan Belum anda masukkan!");
             $("#cicilan").parents('.form-line').addClass('focused error');
             $("#cicilan").focus();
-         }else if(cicilan == ''){
-            alert("Cicilan Belum anda masukkan!");
-            $("#cicilan").parents('.form-line').addClass('focused error');
-            $("#cicilan").focus();
-            
+          
 		 }else{
 
             //transaksi dibelakang layar

@@ -11,7 +11,7 @@
  Target Server Version : 100132
  File Encoding         : 65001
 
- Date: 06/08/2018 10:09:31
+ Date: 09/08/2018 00:33:20
 */
 
 SET NAMES utf8mb4;
@@ -54,7 +54,7 @@ CREATE TABLE `m_akun_admin_pppu`  (
   `user_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `date_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_akun_admin_pppu
@@ -76,7 +76,7 @@ CREATE TABLE `m_akun_sales`  (
   `user_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `date_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_akun_sales
@@ -151,13 +151,14 @@ CREATE TABLE `m_customer`  (
   `user_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `date_update` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_customer
 -- ----------------------------
 INSERT INTO `m_customer` VALUES (8, 'KP84455', 'Karlina', 'Tegal', '1993-10-01', '087889677228', '0218978675', '0218786778', 'karlinamaksum19@gmail.com', 'Jl.Notog Pintu', 'da.txt', 'db.txt', 'dc.txt', 'dd.txt', 'admin', '2018-08-03 16:09:06', NULL, NULL);
 INSERT INTO `m_customer` VALUES (9, 'KP62033', 'Okki S', 'Jakarta', '1993-10-01', '0831631131', '021882647', '0217843635', 'okkisetyawan@gmail.com', 'Jl.Nangka', 'dataa.pdf', 'datab.pdf', 'datac.pdf', 'datad.pdf', 'admin', '2018-08-05 06:27:11', NULL, NULL);
+INSERT INTO `m_customer` VALUES (10, 'KP04322', 'hgfdfdd', 'xc', '2018-08-07', '876543', '87654', '021346', 'okkisetyawan@gmail.com', 'ilhgfhfg', 'uas_student_karlina.pdf', 'uas_student_karlina.pdf', 'uas_student_karlina.pdf', 'uas_student_karlina.pdf', 'admin', '2018-08-06 19:05:09', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for m_sales
@@ -220,7 +221,12 @@ CREATE TABLE `t_booking_fee`  (
   `priority_code` varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `date_assign` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_booking_fee
+-- ----------------------------
+INSERT INTO `t_booking_fee` VALUES (7, 'TBFHN3478', 8, 2, 'user-img-background.jpg', 'PCDTUR3IZ', '2018-08-07 16:51:59');
 
 -- ----------------------------
 -- Table structure for t_closing
@@ -252,6 +258,7 @@ CREATE TABLE `t_pppu`  (
 DROP TABLE IF EXISTS `t_pu`;
 CREATE TABLE `t_pu`  (
   `id` int(20) NOT NULL AUTO_INCREMENT,
+  `no_pu` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `id_customer` int(20) NULL DEFAULT NULL,
   `id_sales` int(20) NULL DEFAULT NULL,
   `id_bank` int(20) NULL DEFAULT NULL,
@@ -261,7 +268,12 @@ CREATE TABLE `t_pu`  (
   `date_assign` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `user_assign` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_pu
+-- ----------------------------
+INSERT INTO `t_pu` VALUES (20, 'LKLP9X72', 8, 2, 3, 7, 14, '12', '2018-08-07', 'admin');
 
 -- ----------------------------
 -- Table structure for t_refund

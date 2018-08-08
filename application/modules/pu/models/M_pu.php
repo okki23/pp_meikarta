@@ -39,8 +39,8 @@ class M_pu extends Parent_Model {
       			 		
                
       			    $sub_array[] = '<a href="javascript:void(0)" class="btn btn-primary btn-xs waves-effect" id="detail" onclick="Show_Detail('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a> 
-      				  &nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-primary btn-xs waves-effect" onclick="KP('.$row->id.');" > <i class="material-icons">print</i> Cetak KP </a>
-      								&nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="material-icons">delete</i> Hapus </a>';  
+									&nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-primary btn-xs waves-effect" onclick="KP('.$row->id.');" > <i class="material-icons">print</i> Cetak KP </a>
+      								';  
                
                 $data[] = $sub_array;  
                 $no++;
