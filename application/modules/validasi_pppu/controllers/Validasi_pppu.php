@@ -41,6 +41,17 @@ class Validasi_pppu extends Parent_Controller {
        $getdata = $this->m_validasi_pppu->fetch_validasi_pppu();
        echo json_encode($getdata);   
   }  
+
+  public function validasi(){
+  	$idpos = $this->input->post('idpos');
+  	echo json_encode($idpos,TRUE);
+
+  	$submit = $this->db->query("insert into t_pppu (id_pu,status,date_assign,user_assign) values ('".$idpos."','Y','".date('Y-m-d H:i:s')."','".$this->session->userdata('username')."')");
+
+  	if($submit){
+  		echo json_encode(array("response"=>array('message'=>'success')));
+  	}
+  }
 	
   //method yang digunakan untuk menarik id dari data yang dituju untuk diambil datanya dengan query kemudian di parse kedalam form edit data
 	public function get_data_edit(){
@@ -104,6 +115,31 @@ class Validasi_pppu extends Parent_Controller {
          
     }  
   }  
+
+  public function print_pppu(){
+
+
+              $this->load->library("pdf");
+              $this->pdf->setPrintHeader(false);
+              $this->pdf->setPrintFooter(true, 'aku', 'kau');
+              $this->pdf->SetHeaderData("", "", 'Judul Header', "codedb.co");
+              $this->pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+              // set auto page breaks
+              $this->pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+              // add a page
+              $this->pdf->AddPage("P", "A4");
+              // set font
+              $this->pdf->SetFont("helvetica", "", 9);
+              $html = $this->load->view('cetak_pppu_view', $data, true);
+
+              $this->pdf->writeHTML($html, true, false, true, false, "");
+              ob_end_clean();
+              //$this->pdf->Output("Employee Information.pdf", "I");
+              //$this->pdf->Output('c:/xampp/htdocs/tnd/store_files/filename.pdf', 'I');
+              $this->pdf->Output(base_url('upload/filename.pdf'), 'I');
+
+  }
+  
        
 
 

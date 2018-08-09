@@ -22,12 +22,14 @@ class M_validasi_pppu extends Parent_Model {
         $this->load->database();
   }
   public function fetch_validasi_pppu(){   
-		   $getdata = $this->db->query("select a.*,b.id,c.nama as nama_sales,d.nama as nama_customer,b.kode_ttbf,b.priority_code, e.nama_bank,f.blok_tower,f.lantai,f.no_unit,f.tipe from t_pu a
+		   $getdata = $this->db->query("select a.*,c.nama as nama_sales,d.nama as nama_customer,b.kode_ttbf,b.priority_code, e.nama_bank,f.blok_tower,f.lantai,f.no_unit,f.tipe,g.status
+from t_pu a
 inner join t_booking_fee b on b.id = a.id_bf
 inner join m_sales c on c.id = b.id_sales
 inner join m_customer d on d.id = b.id_customer
 inner join m_bank e on e.id = a.id_bank
-inner join m_unit f on f.id = a.id_unit")->result();
+inner join m_unit f on f.id = a.id_unit
+left join t_pppu g on g.id_pu = a.id")->result();
 		   $data = array();  
 		   $no = 1;
            foreach($getdata as $row)  
@@ -35,16 +37,22 @@ inner join m_unit f on f.id = a.id_unit")->result();
                 $sub_array = array();  
                 $sub_array[] = $no;
                 $sub_array[] = $row->nama_customer;   
-			    $sub_array[] = $row->blok_tower;   
+			          $sub_array[] = $row->blok_tower;   
                 $sub_array[] = $row->kode_ttbf;  
-			    $sub_array[] = $row->no_pu; 
-         
-			    $sub_array[] = '&nbsp; <a href="javascript:void(0)" class="btn btn-primary btn-xs waves-effect" id="edit" onclick="KP('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a>
-								&nbsp; <a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="material-icons">create</i> Konfirmasi </a> 
-								';  
+			          $sub_array[] = $row->no_pu; 
+                if($row->status == '' || empty($row->status)){
+                     $sub_array[] = '&nbsp; <a href="javascript:void(0)" class="btn btn-primary btn-xs waves-effect" id="detail" onclick="Show_Detail('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a>
+                  &nbsp; <a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Validasi('.$row->id.');" > <i class="material-icons">create</i> Validasi </a>';  
+                }else{
+                   $sub_array[] = '&nbsp; <a href="javascript:void(0)" class="btn btn-primary btn-xs waves-effect" id="detail" onclick="Show_Detail('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a>
+                  &nbsp;
+                  <a href="javascript:void(0)" class="btn btn-success btn-xs waves-effect" ><i class="material-icons">check_circle</i> Tervalidasi </a>
+                  <a href="'.base_url('validasi_pppu/print_pppu').'" class="btn btn-success btn-xs waves-effect" ><i class="material-icons">print</i> Cetak PPPU </a> ';  
+                }
+			          
                
                 $data[] = $sub_array;  
-                 $no++;
+                $no++;
            }  
           
 		   return $output = array("data"=>$data);

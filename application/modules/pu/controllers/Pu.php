@@ -121,7 +121,7 @@ class Pu extends Parent_Controller {
  	// exit();
     //$id = isset($data_form['id']) ? $data_form['id'] : NULL; 
  
- 
+ 	
 
     $simpan = $this->db->query("insert into t_pu set id_customer = '".$data_form['id_customer']."',
     							no_pu = '".$data_form['no_pu']."',

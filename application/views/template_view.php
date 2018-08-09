@@ -207,6 +207,12 @@
                             <span>Validasi P3U</span>
                         </a>
                     </li> 
+                      <li>
+                        <a href="<?php echo base_url('booking_fee'); ?>">
+                            <i class="material-icons">dns</i>
+                            <span>Refund</span>
+                        </a>
+                    </li> 
                     <li>
 					<li class="header">Laporan</li>
                     <li>

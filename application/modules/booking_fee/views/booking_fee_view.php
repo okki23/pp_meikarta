@@ -370,8 +370,8 @@
             $("#tipe").parents('.form-line').addClass('focused error');
             $("#tipe").focus();
          	alert('Anda Belum Unggah Foto!');
-		 }else if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1){
-			alert("Format File yang diizinkan adalah JPEG,GIF,PNG,JPG !");  
+		 }else if(jQuery.inArray(extension, ['gif','png','jpg','jpeg','pdf','doc','docx']) == -1){
+			alert("Format File yang diizinkan adalah JPEG,GIF,PNG,JPG,'PDF','DOC','DOCX' !");  
             $('#user_image').val('');  
             return false;  
 		 }else{

@@ -65,6 +65,8 @@
                                                 <div class="form-line">
                                                     <input type="text" name="priority_code" id="priority_code" class="form-control" required readonly="readonly" >
                                                     <input type="hidden" name="id_bf" id="id_bf" required>
+                                                    <input type="hidden" name="id_sales" id="id_sales" required>
+                                                    <input type="hidden" name="id_customer" id="id_customer" required>
                                                 </div>
                                                 <span class="input-group-addon">
                                                     <button type="button" onclick="CariPriorityCode();" class="btn btn-primary"> Cari Priority Code... </button>
@@ -97,7 +99,7 @@
                                             <input type="text" name="no_pu" id="no_pu" class="form-control" readonly="readonly" />
                                         </div>
                                     </div>
-									<div class="form-group">
+									<!-- <div class="form-group">
                                         <div class="form-line">
 											<b>Nama Customer</b>
       
@@ -116,7 +118,7 @@
 													<button type="button" onclick="CariSales();" class="btn btn-primary"> Cari Sales... </button>
                                             </div>
                                            
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <div class="form-line">
                                             <b>Unit</b>
@@ -225,6 +227,7 @@
                                             <th style="width:5%;">Nama Customer</th> 
                                             <th style="width:5%;">Nama Sales</th> 
 											<th style="width:5%;">Tanggal Booking Fee</th> 
+
                                         </tr>
                                     </thead> 
                                     <tbody id="daftar_prioritycodex">
@@ -695,6 +698,8 @@
             console.log(content);
 
             $("#id_bf").val(content[0]);
+            $("#id_customer").val(content[7]);
+            $("#id_sales").val(content[6]);
             $("#priority_code").val(content[2]);
 			$("#ceklis").show();
 

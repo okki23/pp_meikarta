@@ -19,11 +19,11 @@
 							   <table class="table table-bordered table-striped table-hover js-basic-example" id="example" >
 									<thead>
 										<tr>
-											<th style="width:5%;">No</th>
+											<th style="width:1%;">No</th>
 											<th style="width:5%;">Nama Customer</th> 
                                             <th style="width:5%;">Blok Tower</th>  
-											<th style="width:5%;">Kode BF</th>  
-											<th style="width:5%;">Kode PU</th>  
+											<th style="width:3%;">Kode BF</th>  
+											<th style="width:3%;">Kode PU</th>  
 											<th style="width:15%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -45,7 +45,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="defaultModalLabel">Form Tambah Data</h4>
+                            <h4 class="modal-title" id="defaultModalLabel">Form Validasi PPPU</h4>
                         </div>
                         <div class="modal-body">
                               <form method="post" id="user_form" enctype="multipart/form-data">   
@@ -105,53 +105,19 @@
     </div>
 	
 	<!-- detail data customer -->
-	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
+	<div class="modal fade" id="DetailPPPU" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Detail validasi_pppu</h4>
+                            <h4 class="modal-title">Detail PPPU</h4>
                         </div>
                         <div class="modal-body">
-						
-						<table class="table table-responsive">
-							<tr>
-								<td style="font-weight:bold;"> Blok Tower</td>
-								<td> : </td>
-								<td> <p id="blok_tower_dtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Tipe</td>
-								<td> : </td>
-								<td> <p id="tipe_dtl"> </p> </td> 
-							</tr>
-							<tr>
-								<td style="font-weight:bold;"> Lantai</td>
-								<td> : </td>
-								<td> <p id="lantai_dtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Luas</td>
-								<td> : </td>
-								<td> <p id="luas_dtl"> </p> </td> 
-							</tr>
-							<tr>
-								<td style="font-weight:bold;"> No validasi_pppu</td>
-								<td> : </td>
-								<td> <p id="no_validasi_pppu_dtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Harga </td>
-								<td> : </td>
-								<td> <p id="harga_dtl"> </p> </td> 
-							</tr>
-							 
-							<tr>
-								<td style="font-weight:bold;"> Foto validasi_pppu  </td> 
-								<td colspan="4">  : </td> 
-							</tr> 
-							<tr>
-								<td colspan="6" align="center">  
-								<img src="" class="img responsive" id="foto_validasi_pppu_dtl">
-								</td>
-							</tr>
-						 
+						<input type="tex">
+						 Ini halaman buat validasi P3U
+                         <br>
+                         Anda yakin mau print PPPU?
+                         <button type="button" class="btn btn-primary" onclick="SubmitValidasi();" > Validasi PPPU </button>
+						 </div>
 							 <div class="modal-footer">
 							  <button type="button" class="btn btn-danger" data-dismiss="modal"> X Tutup </button>
 							 </div>
@@ -178,6 +144,29 @@
         }
      }
 	 
+
+     function Validasi(id){
+        if(confirm('Anda yakin ingin memvalidasi PPPP ini?')){
+            $.ajax({
+            url:"<?php echo base_url('validasi_pppu/validasi'); ?>",
+            type:"POST",
+            data:{idpos:id},
+            success:function(result){
+                $('#example').DataTable().ajax.reload(); 
+                console.log(result);
+                  $.notify("Berhasil validasi PPPU !", {
+                    animate: {
+                        enter: 'animated fadeInRight',
+                        exit: 'animated fadeOutRight'
+                    }  
+                 },{
+                    type: 'success'
+                    });
+                }
+            });
+        }
+        
+     }
 	 function Show_Detail(id){ 
 		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
 		$.ajax({

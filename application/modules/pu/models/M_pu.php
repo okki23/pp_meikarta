@@ -116,10 +116,12 @@ class M_pu extends Parent_Model {
                 $sub_array = array();  
                 $sub_array[] = $row->id;   
                 $sub_array[] = $row->kode_ttbf;   
-			    $sub_array[] = $row->priority_code;   
+			          $sub_array[] = $row->priority_code;   
                 $sub_array[] = $row->nama_customer;  
-      			$sub_array[] = $row->nama_sales;  
-				$sub_array[] = $row->date_assign;  				
+          			$sub_array[] = $row->nama_sales;  
+        				$sub_array[] = $row->date_assign;
+                $sub_array[] = $row->id_sales;
+                $sub_array[] = $row->id_customer;  				
               
                 $data[] = $sub_array;  
                 $no++;
