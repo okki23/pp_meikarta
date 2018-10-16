@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data Price List Item
+                                Data Package
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -23,10 +23,7 @@
 									<thead>
 										<tr>
 											<th style="width:5%;">No</th>
-                                            <th style="width:5%;">Kategori</th>  
-											<th style="width:5%;">Item</th>  
-											<th style="width:5%;">Satuan</th> 
-											<th style="width:5%;">Harga Satuan</th> 
+                                            <th style="width:25%;">Caption Foto</th>   
 											<th style="width:15%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -52,35 +49,14 @@
                         </div>
                         <div class="modal-body">
                               <form method="post" id="user_form" enctype="multipart/form-data">   
-                                 <input type="hidden" name="id" id="id"> 
-                                <div class="input-group">
-                                                <div class="form-line">
-                                                    <input type="text" name="kategori" id="kategori" class="form-control" required readonly="readonly" >
-                                                    <input type="hidden" name="id_kategori" id="id_kategori" required>
-                                                    
-                                                </div>
-                                                <span class="input-group-addon">
-                                                    <button type="button" onclick="PilihKategori();" class="btn btn-primary"> Pilih Kategori.. </button>
-                                                </span>
-                                </div>
-                                   
-								 
+                                
+                                    <input type="hidden" name="id" id="id"> 
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="item" id="item" class="form-control" placeholder="Nama Item" />
+                                            <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Caption Foto" />
                                         </div>
                                     </div>
-									<div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="satuan" id="satuan"  class="form-control" placeholder="Satuan" />
-                                        </div>
-                                    </div>
-									<div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="harga_satuan" id="harga_satuan"  class="form-control" placeholder="Harga Satuan" />
-                                        </div>
-                                     </div>
-								 
+									 
 									<div class="form-group">
                                         <div class="form-line">
 											Upload Foto 
@@ -102,77 +78,32 @@
                     </div>
                 </div>
     </div>
-
-
-    <!-- modal cari customer -->
-    <div class="modal fade" id="PilihKategoriModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" > Pilih Kategori </h4>
-                        </div>
-                        <div class="modal-body">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
-
-                                <br>
-                                <hr>
-
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_kategori" >
-  
-                                    <thead>
-                                        <tr> 
-                                            <th style="width:5%;">No</th>
-                                            <th style="width:95%;">Kategori Pelanggan</th>
-                                             
-                                        </tr>
-                                    </thead> 
-                                    <tbody id="daftar_kategorix">
-
-                                </tbody>
-                                </table> 
-                       </div>
-                     
-                    </div>
-                </div>
-    </div>
 	
 	<!-- detail data customer -->
 	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Detail Price List Item</h4>
+                            <h4 class="modal-title">Detail Package</h4>
                         </div>
                         <div class="modal-body">
 						
 						<table class="table table-responsive">
-							<tr>
-								<td style="font-weight:bold;"> Kategori</td>
-								<td> : </td>
-								<td> <p id="kategori_dtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Nama Item</td>
-								<td> : </td>
-								<td> <p id="item_dtl"> </p> </td> 
-							</tr>
-							<tr>
-								<td style="font-weight:bold;"> Satuan</td>
-								<td> : </td>
-								<td> <p id="satuan_dtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Harga Satuan</td>
-								<td> : </td>
-								<td> <p id="harga_satuan_dtl"> </p> </td> 
-							</tr>
-							 
 							 
 							<tr>
-								<td style="font-weight:bold;"> Foto price_list_item  </td> 
+								 
+								<td style="font-weight:bold;"> Caption Foto </td>
+								<td> : </td>
+								<td> <p id="keterangan_dtl"> </p> </td> 
+							</tr>
+							 
+							<tr>
+								<td style="font-weight:bold;"> Foto  </td> 
 								<td colspan="4">  : </td> 
 							</tr> 
 							<tr>
 								<td colspan="6" align="center">  
-								<img src="" class="img responsive" style="width:50%; height: 50%;" id="foto_dtl">
+								<img src="" class="img responsive" style="width: 50%; height: 50%;" id="foto_price_list_package_dtl">
 								</td>
 							</tr>
 						 
@@ -189,54 +120,30 @@
 			
  
    <script type="text/javascript">
-	function PilihKategori(){
-        $("#PilihKategoriModal").modal({backdrop: 'static', keyboard: false,show:true});
-    }
-
-
-    function PreviewGambar(input) {
+	
+     function PreviewGambar(input) {
         if (input.files && input.files[0]){
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#image1').attr('src', e.target.result);
-                $("#foto").val($('#user_image').val().replace(/C:\\fakepath\\/i, ''));
+				$("#foto").val($('#user_image').val().replace(/C:\\fakepath\\/i, ''));
             };
             reader.readAsDataURL(input.files[0]);
-            
+			
         }
      }
-      
-    $('#daftar_kategori').DataTable( {
-        "ajax": "<?php echo base_url(); ?>price_list_item/fetch_cat_pricelist" 
-    });
-
-     var daftar_kategori = $('#daftar_kategori').DataTable();
-     
-        $('#daftar_kategori tbody').on('click', 'tr', function () {
-            
-            var content = daftar_kategori.row(this).data()
-            console.log(content);
-            $("#kategori").val(content[1]);
-            $("#id_kategori").val(content[2]);
-            $("#PilihKategoriModal").modal('hide');
-        } );
-
-
+	 
 	 function Show_Detail(id){ 
 		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
 		$.ajax({
-			 url:"<?php echo base_url(); ?>price_list_item/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>price_list_package/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){  
-                 var nf = new Intl.NumberFormat();
-                 $("#id_kategori_dtl").html(result.id_kategori);
-                 $("#kategori_dtl").html(result.kategori);
-                 $("#item_dtl").html(result.item); 
-				 $("#satuan_dtl").html(result.satuan); 
-				 $("#harga_satuan_dtl").html('Rp. '+nf.format(result.harga_satuan));
-				  
-				 $("#foto_dtl").attr("src","upload/"+result.foto);
+			 
+                 $("#keterangan_dtl").html(result.keterangan);
+                
+				 $("#foto_price_list_package_dtl").attr("src","upload/"+result.foto);
 				 
 				 
 				 
@@ -249,19 +156,16 @@
 		$("#defaultModal").modal('show');
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>price_list_item/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>price_list_package/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){ 
                 
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id);
-                 $("#id_kategori").val(result.id_kategori);
-                 $("#kategori").val(result.kategori);
-                 $("#item").val(result.item);
-                 $("#satuan").val(result.satuan);
-				 $("#harga_satuan").val(result.harga_satuan);
-				 $('#image1').attr('src',"upload/"+result.foto);
+                 $("#keterangan").val(result.keterangan);
+				 $("#foto").val(result.foto); 
+                 $('#image1').attr('src',"upload/"+result.foto);
                   
 			 }
 		 });
@@ -275,9 +179,9 @@
 	 function Hapus_Data(id){
 		if(confirm('Anda yakin ingin menghapus data ini?'))
         {
-        // ajax delete data to database
+        
         $.ajax({
-            url : "<?php echo base_url('price_list_item/hapus_data')?>/"+id,
+            url : "<?php echo base_url('price_list_package/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -314,22 +218,22 @@
     });
   
 	function Simpan_Data(){
-	 
+		 //setting semua data dalam form dijadikan 1 variabel 
 		 var formData = new FormData($('#user_form')[0]); 
 
-          
+         //validasi tipe file anda sebelum submit ke controller
+         
          var foto = $('#foto').val();
 		 var extension = $('#foto').val().split('.').pop().toLowerCase();  
  
-  
-         var id_kategori = $("#id_kategori").val();
-         var item = $("#item").val();
-         var satuan = $("#satuan").val();
-		 var harga_satuan = $("#harga_satuan").val();
-          
-           
+ 
+         //validasi form sebelum submit ke controller
+         var keterangan = $("#keterangan").val();
+       
+
+            //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>price_list_item/simpan_data",
+             url:"<?php echo base_url(); ?>price_list_package/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -360,8 +264,8 @@
         weekStart: 1,
         time: false
      });
-      
-      
+
+	 
        $(document).ready(function() {
 		   
 		$("#addmodal").on("click",function(){
@@ -376,14 +280,10 @@
 		});
 		
 		$('#example').DataTable( {
-			"ajax": "<?php echo base_url(); ?>price_list_item/fetch_price_list_item" 
+			"ajax": "<?php echo base_url(); ?>price_list_package/fetch_price_list_package" 
 		});
 	 
-	    $('#daftar_sales').DataTable( {
-            "ajax": "<?php echo base_url(); ?>price_list_item/fetch_kategori" 
-        });
-
-
+	 
 		 
 	  });
   
