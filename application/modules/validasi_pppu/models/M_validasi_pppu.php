@@ -47,7 +47,7 @@ left join t_pppu g on g.id_pu = a.id")->result();
                    $sub_array[] = '&nbsp; <a href="javascript:void(0)" class="btn btn-primary btn-xs waves-effect" id="detail" onclick="Show_Detail('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a>
                   &nbsp;
                   <a href="javascript:void(0)" class="btn btn-success btn-xs waves-effect" ><i class="material-icons">check_circle</i> Tervalidasi </a>
-                  <a href="'.base_url('validasi_pppu/print_pppu').'" class="btn btn-success btn-xs waves-effect" ><i class="material-icons">print</i> Cetak PPPU </a> ';  
+                  <a target="_blank" href="'.base_url('validasi_pppu/print_pppu/'.$row->id).'" class="btn btn-success btn-xs waves-effect" ><i class="material-icons">print</i> Cetak PPPU </a> ';  
                 }
 			          
                

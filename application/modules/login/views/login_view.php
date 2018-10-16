@@ -9,9 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To P3U Meikarta</title>
+    <title>Ranty Pesta Web Administrator</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/images/rp_logo.png'); ?>" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -45,9 +45,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="card">
             <div class="body">
-
+                <div align="center">
+                <img src="<?php echo base_url('assets/images/rp_logo.png'); ?>" class="img-responsive" width="100" height="100">
+                </div>
                 <form id="sign_in" action="<?php echo base_url('login/autentikasi'); ?>" method="POST" enctype="multipart/form-data">
-                    <div class="msg"> Sistem Aplikasi P3U Meikarta </div>
+                    <div class="msg"> Ranty Pesta Web Administrator </div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
@@ -64,19 +66,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="password" class="form-control" name="password" placeholder="Password" required>
                         </div>
                     </div>
-					<h5>Masuk Sebagai :<h5> 
-					<hr>
-					 <div class="input-group">
-					 <input name="posisi" type="radio" id="radio_1" value="1"  />
-                     <label for="radio_1">Superadmin</label>
-                     <input name="posisi" type="radio" id="radio_2" value="2" />
-                     <label for="radio_2">Admin PPPU</label>
-					 <input name="posisi" type="radio" id="radio_3" value="3" />
-                     <label for="radio_3">Sales</label>
-                    </div>
+					 
                     <div class="row"> 
                         <div class="col-lg-12">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">Masuk</button>
+                            <button class="btn btn-block bg-red waves-effect" type="submit">Masuk</button>
                         </div>
                     </div>
                     

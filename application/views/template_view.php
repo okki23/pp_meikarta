@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title><?php echo $judul; ?></title>
     <!-- Favicon-->
-    <link rel="icon" href="<?php echo base_url(); ?>assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/images/rp_logo.png'); ?>" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -30,8 +30,11 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo base_url(); ?>assets/css/themes/all-themes.css" rel="stylesheet" />
-	
-	<link href="<?php echo base_url(); ?>assets/css/card_custom.css" rel="stylesheet" />
+    
+    <link href="<?php echo base_url(); ?>assets/css/card_custom.css" rel="stylesheet" />
+    
+
+    <link href="<?php echo base_url(); ?>assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
     
     <!-- Jquery Core Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
@@ -47,7 +50,17 @@
 
     <!-- Waves Effect Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/node-waves/waves.js"></script>
-
+    <link href="<?php echo base_url('assets/plugins/jquery-ui/css/base/jquery-ui.css'); ?>" rel="stylesheet">
+ 
+ 
+    <!-- TinyMCE -->
+    <script src="<?php echo base_url(); ?>assets/plugins/tinymce/tinymce.js"></script>
+    
+    <script src="<?php echo base_url('assets/plugins/elFinder/js/elfinder.min.js'); ?>"></script>
+    <link href="<?php echo base_url('assets/plugins/elFinder/css/theme.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/plugins/elFinder/css/elfinder.min.css'); ?>" rel="stylesheet">
+    
+ 
     <!-- Jquery DataTable Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
@@ -61,21 +74,16 @@
 
     <!-- Custom Js -->
     <script src="<?php echo base_url(); ?>assets/js/admin.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.7.0/bootstrap-lightbox.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.7.0/bootstrap-lightbox.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap-notify.js"></script>
  
- 
+    
     <script src="<?php echo base_url(); ?>assets/plugins/autosize/autosize.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/pages/ui/notifications.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/momentjs/moment.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>   
     <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
- 
-    <script src="<?php echo base_url(); ?>assets/plugins/jquery-validation/jquery.validate.js"></script>
- 
-    <script src="<?php echo base_url(); ?>assets/plugins/jquery-steps/jquery.steps.js"></script>
-	<script src="<?php echo base_url(); ?>js/pages/forms/form-wizard.js"></script>
+    
+    
 	 
 </head>
 
@@ -109,7 +117,8 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>"> <?php echo $judul; ?> </a>
+               <a class="navbar-brand" href="<?php echo base_url(); ?>">  
+                <?php echo $judul; ?> </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -130,14 +139,9 @@
             <!-- Menu -->
             <div class="menu">
                 
-				<!--list menu-->
-			    <?php
-				if($this->session->userdata('session') == 1){
-				// apabila login sebagai superadmin
-				?>
-				
+				 
 					<ul class="list">
-					<li>
+					<!-- <li>
                         <a href="<?php echo base_url('dashboard'); ?>">
                             <i class="material-icons">home</i>
                             <span>Home  </span>
@@ -149,20 +153,86 @@
                            <i class="material-icons">dns</i>
                             <span>Customer</span>
                         </a>
-                    </li> 
+                    </li>  -->
                     <li>
-                        <a href="<?php echo base_url('unit'); ?>">
+                        <a href="<?php echo base_url('about'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Unit</span>
+                            <span>About</span>
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('bank'); ?>">
+                        <a href="<?php echo base_url('cat_pricelist'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Bank</span>
+                            <span>Kategori Pricelist Item</span>
                         </a>
                     </li> 
                     <li>
+                        <a href="<?php echo base_url('price_list_item'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Pricelist Item</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('price_list_package'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Pricelist Package</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('client'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Client</span>
+                        </a>
+                    </li> 
+                     <li>
+                        <a href="<?php echo base_url('client'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>News</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('googlemaps'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Google Maps</span>
+                        </a>
+                    </li>  
+                    <li>
+                        <a href="<?php echo base_url('cat_foto'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Kategori Foto</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('foto'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Foto</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('slideshow'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Slideshow</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('user'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Manajemen User</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('user'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Social Media</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url(); ?>" target="_blank">
+                           <i class="material-icons">dns</i>
+                            <span>Pratinjau Website</span>
+                        </a>
+                    </li> 
+                    <!-- <li>
                         <a href="<?php echo base_url('sales'); ?>">
                            <i class="material-icons">dns</i>
                             <span>Sales</span>
@@ -218,109 +288,25 @@
                     <li>
                         <a href="<?php echo base_url('closing'); ?>">
                             <i class="material-icons">dns</i>
-                            <span>Closing</span>
+                            <span>Report Closing</span>
                         </a>
                     </li> 
                     <li>
                         <a href="<?php echo base_url('refund'); ?>">
                             <i class="material-icons">dns</i>
-                            <span>Refund</span>
+                            <span>Report Refund</span>
                         </a>
-                    </li>  
+                    </li>   -->
 					</ul>
 					
-				<?php
-				}else if($this->session->userdata('session') == 2){
-				// apabila login sebagai admin pppu
-				?>
-
-					<ul class="list">
-					<li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
-                            <i class="material-icons">home</i>
-                            <span>Home  </span>
-                        </a>
-                    </li> 
-                     
-                    <li class="header">Menu Transaksi</li> 
-                    <li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
-                            <i class="material-icons">dns</i>
-                            <span>Validasi P3U</span>
-                        </a>
-                    </li> 
-                 
-					</ul>
-				
-				<?php
-				}else{
-				// apabila login sebagai sales
-				?>
-
-					<ul class="list">
-					<li>
-                        <a href="<?php echo base_url('dashboard'); ?>">
-                            <i class="material-icons">home</i>
-                            <span>Home  </span>
-                        </a>
-                    </li> 
-                    <li class="header">Menu Master</li> 
-                    <li>
-                        <a href="<?php echo base_url('customer'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Customer</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('unit'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Unit</span>
-                        </a>
-                    </li> 
-                    
-                    
-                    
-                    <li class="header">Menu Transaksi</li>
-                    <li>
-                        <a href="<?php echo base_url('booking_fee'); ?>">
-                            <i class="material-icons">dns</i>
-                            <span>Booking Fee</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('pu'); ?>">
-                            <i class="material-icons">dns</i>
-                            <span>PU</span>
-                        </a>
-                    </li>  
-                    <li>
-					<li class="header">Laporan</li>
-                    <li>
-                        <a href="<?php echo base_url('closing'); ?>">
-                            <i class="material-icons">dns</i>
-                            <span>Closing</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('refund'); ?>">
-                            <i class="material-icons">dns</i>
-                            <span>Refund</span>
-                        </a>
-                    </li> 
-                          
-                    
-					</ul>
-				
-				<?php 
-				}
-				?>
+				  
 			   
             </div>
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2018 <a href="javascript:void(0);"> Karlina </a>
+                    &copy; 2018 <a href="javascript:void(0);"> Ranty Pesta </a>
                 </div>
             </div>
             <!-- #Footer -->

@@ -1,0 +1,79 @@
+/*
+#1 = d10000
+#2 = d10000
+*/
+a {
+	color: #d10000;
+}
+a:hover {
+	color: #d10000;
+}
+
+/* menu */
+.nav>li>a:hover {
+	color: #d10000;
+}
+
+.navbar .navbar-nav > .active > a {
+	color: #d10000;
+}
+.navbar .navbar-brand:hover {
+	color: #d10000;
+}
+
+/* flexslider */
+.flex-control-paging li a {
+	background: #d10000;
+}
+
+.flex-direction-nav a:hover{
+	background-color:#d10000;
+}
+
+.testimonial span.author a {
+	color: #d10000;
+}
+
+/* --- icon box hover --- */
+.hi-icon-effect-5 .hi-icon {
+	color: #d10000;
+	box-shadow: 0 0 0 4px #d10000;
+}
+.no-touch .hi-icon-effect-5 .hi-icon:hover {
+	background: #d10000;
+	box-shadow: 0 0 0 8px  #d10000;
+}
+
+
+/* portfolio */
+.portfolio-item .portfolio-desc {
+	background: #d10000;
+}
+
+/* btn */
+.btn-theme {
+  background: #d10000;
+}
+.btn-theme:hover,.btn-theme:focus,.btn-theme:active{
+  background: #d10000;
+}
+.btn-cta,.btn-cta.btn-lg {
+  background: #d10000;
+  border-color: #d10000;
+}
+
+.btn-cta:focus,.btn-cta:active{
+   border-color: #d10000;
+}
+
+/* footer */
+.social-circle li a {
+	background:#d10000;
+}
+
+a.scrollup{
+	background:#d10000;
+}
+a.scrollups{
+	background:#d10000;
+}

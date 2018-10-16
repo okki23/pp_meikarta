@@ -37,7 +37,8 @@ class M_booking_fee extends Parent_Model {
                 $sub_array[] = $row->nama_sales;  
       			    $sub_array[] = $row->priority_code;   
                
-      			    $sub_array[] = '<a href="javascript:void(0)" class="btn btn-primary btn-xs waves-effect" id="detail" onclick="Show_Detail('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a>  
+      			    $sub_array[] = '<a href="javascript:void(0)" class="btn btn-primary btn-xs waves-effect" id="detail" onclick="Show_Detail('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a>
+                  &nbsp;   <a target="_blank" href="'.base_url('booking_fee/print_ttbf/'.$row->id).'" class="btn btn-primary btn-xs waves-effect"   > <i class="material-icons">print</i> Print </a>
       								&nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="material-icons">delete</i> Hapus </a>';  
                
                 $data[] = $sub_array;  

@@ -97,6 +97,8 @@ class Booking_fee extends Parent_Controller {
 		echo json_encode($result,TRUE);
 	}
 	
+
+
   //method atau fungsi yang digunakan untuk menyimpan data dari form,baik saat melakukan simpan maupun ubah data
 	public function simpan_data(){
     
@@ -144,6 +146,33 @@ class Booking_fee extends Parent_Controller {
 
 	}
 	
+
+  public function print_ttbf(){
+     $id = $this->uri->segment(3);
+     echo $id;
+     $sql = "select a.*,b.nama as nama_customer,b.kode_pelanggan,b.email,b.alamat,b.no_hp,c.nik,c.nama as nama_sales from t_booking_fee a
+INNER JOIN m_customer b on b.id = a.id_customer
+INNER JOIN m_sales c on c.id = a.id_sales";
+$trans = $this->db->query($sql)->row();
+    $data['trans'] = $trans;
+    $this->load->library("pdf");
+              $this->pdf->setPrintHeader(false);
+              $this->pdf->setPrintFooter(true, 'aku', 'kau');
+              $this->pdf->SetHeaderData("", "", 'Judul Header', "codedb.co");
+              $this->pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+              // set auto page breaks
+              $this->pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+              // add a page
+              $this->pdf->AddPage("P", "A4");
+              // set font
+              $this->pdf->SetFont("helvetica", "", 9);
+              $html = $this->load->view('booking_fee/cetak_ttbf', $data, true);
+
+              $this->pdf->writeHTML($html, true, false, true, false, "");
+              ob_end_clean();
+              //$this->pdf->Output("Employee Information.pdf", "I");
+              $this->pdf->Output('c:/xampp/htdocs/tnd/store_files/filename.pdf', 'I');
+  }
   //method atau fungsi yang digunakan untuk menyimpan foto/gambar dari form dan me return nama file yang baru di upload untuk digunakan saat penyimpanan atau perubahan data foto/gambar
   function upload_foto(){  
     if(isset($_FILES["user_bukti"])){  

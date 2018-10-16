@@ -470,8 +470,7 @@
                  $("#nama_sales").val(result.nama_sales);
 				 $("#nama_customer").val(result.nama_customer);
 				 $("#id_sales").val(result.id_sales);
-                 $("#id_customer").val(result.id_customer);
-				 
+                 $("#id_customer").val(result.id_customer); 
                  $("#upload_bukti_transfer").val(result.upload_bukti_transfer);
                  $('#image1').attr('src',"upload/"+result.upload_bukti_transfer);
                   
@@ -607,15 +606,14 @@
 			Bersihkan_Form();
 			$("#ceklis").hide();
 			$("#kode_ttbf").prop("readonly",true);
-            $.get("<?php echo base_url('pu/generate_no_pu');?>",function(data){
+            $.get("<?php echo base_url('pu/generate_no_pu'); ?>",function(data){
                   $("#no_pu").val(data);
             });
           //  $('#wizard_with_validation').bootstrapWizard('show',0); 
           $("#wizard_with_validation").steps("setStep", 0); 
         
 		});
-		
-	 
+		 
 		
 		$('#example').DataTable( {
 			"ajax": "<?php echo base_url(); ?>pu/fetch_pu" 

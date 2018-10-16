@@ -462,26 +462,26 @@
             $("#alamat").focus();
 		 }else if(upload_ktp == ''){
 			alert('Anda Belum Unggah KTP!');
-	     }else if(jQuery.inArray(extension_upload_ktp, ['docx','doc','xls','xlsx','txt','pdf']) == -1){
-			alert("Format File yang diizinkan adalah DOCX ,DOC ,XLS, XLSX, TXT, PDF!");  
+	     }else if(jQuery.inArray(extension_upload_ktp, ['pdf','jpg','jpeg','png']) == -1){
+			alert("Format File yang diizinkan adalah PDF ,JPG ,JPEG, PNG!");  
             $('#user_image').val('');  
             return false;  
 		 }else if(upload_npwp == ''){
 			alert('Anda Belum Unggah NPWP!');
-		 }else if(jQuery.inArray(extension_upload_npwp, ['docx','doc','xls','xlsx','txt','pdf']) == -1){
-			alert("Format File yang diizinkan adalah DOCX ,DOC ,XLS, XLSX, TXT, PDF!");  
+		 }else if(jQuery.inArray(extension_upload_npwp,['pdf','jpg','jpeg','png']) == -1){
+			alert("Format File yang diizinkan adalah PDF ,JPG ,JPEG, PNG!");  
             $('#user_image').val('');  
             return false;  
 		 }else if(upload_slip_gaji == ''){
 			alert('Anda Belum Unggah Slip Gaj!');
-		 }else if(jQuery.inArray(extension_upload_slip_gaji, ['docx','doc','xls','xlsx','txt','pdf']) == -1){
-			alert("Format File yang diizinkan adalah DOCX ,DOC ,XLS, XLSX, TXT, PDF!");  
+		 }else if(jQuery.inArray(extension_upload_slip_gaji,['pdf','jpg','jpeg','png']) == -1){
+			alert("Format File yang diizinkan adalah PDF ,JPG ,JPEG, PNG!");    
             $('#user_image').val('');  
             return false;  
 		 }else if(upload_dok_pendukung == ''){
 			alert('Anda Belum Unggah Dokumen Pendukung!');
-		 }else if(jQuery.inArray(extension_upload_dok_pendukung, ['docx','doc','xls','xlsx','txt','pdf']) == -1){
-			alert("Format File yang diizinkan adalah DOCX ,DOC ,XLS, XLSX, TXT, PDF!");  
+		 }else if(jQuery.inArray(extension_upload_dok_pendukung,['pdf','jpg','jpeg','png']) == -1){
+			alert("Format File yang diizinkan adalah PDF ,JPG ,JPEG, PNG!");  
             $('#user_image').val('');  
             return false;  
 		 

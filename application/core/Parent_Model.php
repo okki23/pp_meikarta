@@ -1,17 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
-author     : Karlina
-email      : karlinamaksum19@gmail.com
-copyright  : 2018 
-deskripsi  : Class ini digunakan untuk menampung fungsi dasar yang mana fungsi tersebut akan di adopsi oleh class turunan nya
-*/
-class Parent_Model extends CI_Model {
-
-	/*variabel global yang digunakan untuk instance di masing masing method agar dapat
-    digunakan sewaktu waktu tanpa harus menulis ulang
-    */
-
+ 
+class Parent_Model extends CI_Model { 
+	 
     protected $nama_tabel = '';
     protected $daftar_field = '';
     protected $primary_key = 'id';
@@ -27,8 +18,7 @@ class Parent_Model extends CI_Model {
         }
         return $data;
     }
-
-	
+ 
     
     public function hapus_data($id){
     	$hapus = $this->db->where('id',$id)->delete($this->nama_tabel);
@@ -85,4 +75,21 @@ class Parent_Model extends CI_Model {
         }
 
  	}
+
+    public function simpan_data($data_form,$nama_tabel,$primary_key,$id){
+ 
+        
+        if ($id === NULL || $id == '') { 
+            $this->db->set($data_form);
+            return $this->db->insert($nama_tabel);
+           
+        } else {
+            
+            $this->db->set($data_form);
+            $this->db->where($primary_key, $id);
+            return $this->db->update($nama_tabel);
+           
+        }
+
+    }
 }
