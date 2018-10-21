@@ -124,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="fa fa-bars color-white"></span>
                     </button>
-          <h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">Ranty Pesta
+          <h1><a class="navbar-brand" href="<?php echo base_url(); ?>" data-0="line-height:90px;" data-300="line-height:50px;">Ranty Pesta
                     </a></h1>
         </div>
         <div class="navbar-collapse collapse">
@@ -137,7 +137,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="#line-pricing">Pricing</a></li>
             <li><a href="#section-works">Portfolio</a></li>
             <li><a href="#section-contact">Hubungi Kami</a></li>
-            <li><a href="<?php echo base_url('news'); ?>">News</a></li>
+            <li><a href="<?php echo base_url('news_list'); ?>" target="_blank">News</a></li>
             <li><a href="<?php echo base_url('login'); ?>">Login</a></li>
           </ul>
         </div>
@@ -160,8 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             echo '<li data-target="#carousel-slider" data-slide-to="'.$v->seq_no.'"></li>';
           }
           ?>
-          <!-- <li data-target="#carousel-slider" data-slide-to="1"></li>
-          <li data-target="#carousel-slider" data-slide-to="2"></li> -->
+  
         </ol>
 
         <div class="carousel-inner">
@@ -891,7 +890,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <script>
     $(document).ready( function () {
-    $('#table_id').DataTable();
+    $('#pricelist_item').DataTable();
 } );
     wow = new WOW({}).init();
   </script>

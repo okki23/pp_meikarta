@@ -163,6 +163,50 @@ if (!function_exists('tanggalan')) {
     }
 
 }
+
+if (!function_exists('tanggalan_hari')) {
+
+    function tanggalan_hari($tanggal) {
+         switch ($tanggal) {
+            case "Sunday":
+                $hari = "Minggu";
+                break;
+
+            case "Monday":
+                $hari = "Senin";
+                break;
+
+            case "Tuesday":
+                $hari = "Selasa";
+                break;
+
+            case "Wednesday":
+                $hari = "Rabu";
+                break;
+
+            case "Thursday":
+                $hari = "Kamis";
+                break;
+
+            case "Friday":
+                $hari = "Jumat";
+                break;
+
+            case "Saturday":
+                $hari = "Sabtu";
+                break; 
+
+            default:
+                $hari = "Kiamat";
+                break;
+        }
+
+        $hasil  = $hari;
+
+        return $hasil;
+    }
+
+}
 if(!function_exists('limit_to_numwords')){
     function limit_to_numwords($string, $numwords) {
         $excerpt = explode(' ', $string, $numwords + 1);

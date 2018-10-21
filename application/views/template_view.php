@@ -186,7 +186,7 @@
                         </a>
                     </li> 
                      <li>
-                        <a href="<?php echo base_url('client'); ?>">
+                        <a href="<?php echo base_url('news'); ?>">
                            <i class="material-icons">dns</i>
                             <span>News</span>
                         </a>
