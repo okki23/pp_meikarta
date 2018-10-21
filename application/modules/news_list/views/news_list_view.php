@@ -10,7 +10,7 @@
 
     <!-- START META SECTION -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Berita investasi, saham, reksadana dan perencanaan keuangan</title>
+    <title>Ranty News</title>
     <meta name="keywords" content="Berita keuangan, riset keuangan, saham, obligasi, reksadana, perencanaan keuangan" />
     <meta name="author" content="PT INDO PREMIER SECURITIES" />
     <meta name="robots" content="index follow" />
@@ -27,27 +27,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 
 
-<!-- serial : 188 of 221 -->
-<!--Favicon -->
-<link rel="apple-touch-icon" sizes="57x57" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-57x57.png?v=LbbprOBE9b">
-<link rel="apple-touch-icon" sizes="60x60" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-60x60.png?v=LbbprOBE9b">
-<link rel="apple-touch-icon" sizes="72x72" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-72x72.png?v=LbbprOBE9b">
-<link rel="apple-touch-icon" sizes="76x76" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-76x76.png?v=LbbprOBE9b">
-<link rel="apple-touch-icon" sizes="114x114" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-114x114.png?v=LbbprOBE9b">
-<link rel="apple-touch-icon" sizes="120x120" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-120x120.png?v=LbbprOBE9b">
-<link rel="apple-touch-icon" sizes="144x144" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-144x144.png?v=LbbprOBE9b">
-<link rel="apple-touch-icon" sizes="152x152" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-152x152.png?v=LbbprOBE9b">
-<link rel="apple-touch-icon" sizes="180x180" href="https://www.indopremier.com/allwebcore/img/favicon/apple-touch-icon-180x180.png?v=LbbprOBE9b">
-<link rel="icon" type="image/png" href="https://www.indopremier.com/allwebcore/img/favicon/favicon-32x32.png?v=LbbprOBE9b" sizes="32x32">
-<link rel="icon" type="image/png" href="https://www.indopremier.com/allwebcore/img/favicon/android-chrome-192x192.png?v=LbbprOBE9b" sizes="192x192">
-<link rel="icon" type="image/png" href="https://www.indopremier.com/allwebcore/img/favicon/favicon-96x96.png?v=LbbprOBE9b" sizes="96x96">
-<link rel="icon" type="image/png" href="https://www.indopremier.com/allwebcore/img/favicon/favicon-16x16.png?v=LbbprOBE9b" sizes="16x16">
-<link rel="manifest" href="https://www.indopremier.com/allwebcore/img/favicon/manifest.json?v=LbbprOBE9b">
-<link rel="mask-icon" href="https://www.indopremier.com/allwebcore/img/favicon/safari-pinned-tab.svg?v=LbbprOBE9b" color="#5bbad5">
-<link rel="shortcut icon" href="https://www.indopremier.com/allwebcore/img/favicon/favicon.ico?v=LbbprOBE9b">
-<meta name="msapplication-TileColor" content="#172e56">
-<meta name="msapplication-TileImage" content="https://www.indopremier.com/allwebcore/img/favicon/mstile-144x144.png?v=LbbprOBE9b">
-<meta name="msapplication-config" content="https://www.indopremier.com/allwebcore/img/favicon/browserconfig.xml?v=LbbprOBE9b">
 <meta name="theme-color" content="#172e56">
 <!--/ END META SECTION -->
 

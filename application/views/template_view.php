@@ -221,12 +221,12 @@
                             <span>Manajemen User</span>
                         </a>
                     </li> 
-                    <li>
+                   <!--  <li>
                         <a href="<?php echo base_url('user'); ?>">
                            <i class="material-icons">dns</i>
                             <span>Social Media</span>
                         </a>
-                    </li> 
+                    </li>  -->
                     <li>
                         <a href="<?php echo base_url(); ?>" target="_blank">
                            <i class="material-icons">dns</i>

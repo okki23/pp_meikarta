@@ -14,7 +14,7 @@ class M_news_list_detail extends Parent_Model {
   }
   public function data_sidebar(){
      
-    return $query = $this->db->query("select * from m_news ORDER BY published_date DESC LIMIT 5")->result();   
+    return $query = $this->db->query("select * from m_news ORDER BY id DESC LIMIT 5")->result();   
   }
   
 	 

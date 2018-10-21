@@ -24,6 +24,12 @@ class Front extends Parent_Controller {
     $data['slideshow'] = $this->db->get('m_slideshow')->result();
 		$this->load->view('front/front_view',$data);
 	}
+
+  public function fetch_price_list_item_front(){  
+       $getdata = $this->m_front->fetch_price_list_item_front();
+       echo json_encode($getdata);   
+    }  
+
 	public function save_contact_form(){
 		 /*
 		var_dump($this->input->post());

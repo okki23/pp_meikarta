@@ -1,11 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
-author     : Karlina
-email      : karlinamaksum19@gmail.com
-copyright  : 2018 
-deskripsi  : Class M_front berisi rincian method atau fungsi logic yang digunakan untuk melakukan transaksi data master front, dimana method yang terdaftar mengadopsi dari Parent Model
-*/
+
 class M_front extends Parent_Model { 
   
   /*variabel global yang digunakan untuk instance di masing masing method agar dapat
@@ -37,6 +32,33 @@ class M_front extends Parent_Model {
         $sql = $this->db->get_where($this->nama_tabel_admin_pppu,array('username'=>$username,'password'=>$password));
 		return $sql;
 	}
+
+
+ public function fetch_price_list_item_front(){
+       $sql = "select a.*,b.deskripsi as kategori from m_pricelist_item a left join m_cat_pricelist b on b.id = a.id_kategori";   
+       $getdata = $this->db->query($sql)->result();
+       $data = array();  
+       $no = 1;
+           foreach($getdata as $row)  
+           {  
+                $sub_array = array();  
+                $sub_array[] = $no;
+                $sub_array[] = $row->kategori;   
+                $sub_array[] = $row->item;   
+                $sub_array[] = $row->satuan;  
+                $sub_array[] = "Rp. ".number_format($row->harga_satuan,0);  
+        
+         
+          $sub_array[] = '<a href="javascript:void(0)" class="btn btn-primary btn-xs" id="detail" onclick="Show_Detail('.$row->id.');" >  Detail </a>';  
+               
+                $data[] = $sub_array;  
+                 $no++;
+           }  
+          
+       return $output = array("data"=>$data);
+        
+    }
+
 	public function autentikasi_superadmin($username,$password){
         $sql = $this->db->get_where($this->nama_tabel_superadmin,array('username'=>$username,'password'=>$password));
 		return $sql;

@@ -15,12 +15,12 @@ class M_news_list extends Parent_Model {
 
   public function data_sidebar(){
      
-    return $query = $this->db->query("select * from m_news ORDER BY published_date DESC LIMIT 5")->result();   
+    return $query = $this->db->query("select * from m_news ORDER BY id DESC LIMIT 5")->result();   
   }
    
 
   function data($number,$offset){
-    $this->db->order_by("published_date", "desc"); 
+    $this->db->order_by("id", "desc"); 
     return $query = $this->db->get($this->nama_tabel,$number,$offset)->result();   
   }
   

@@ -54,6 +54,7 @@
                               <form method="post" id="user_form" enctype="multipart/form-data">   
 									 
                                     <input type="hidden" name="id" id="id"> 
+                                      <input type="hidden" name="published_date" id="published_date" value="<?php echo ('Y-m-d H:i:s'); ?>"> 
 									<div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="title" id="title" class="form-control" placeholder="Title" />

@@ -85,15 +85,8 @@
                 
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id);
-                 $("#tipe").val(result.tipe);
-                 $("#lantai").val(result.lantai);
-                 $("#no_googlemaps").val(result.no_googlemaps);
-				 $("#foto").val(result.foto);
-				 $("#blok_tower").val(result.blok_tower);
-                 $("#luas").val(result.luas);
-				 $("#harga").val(result.harga);
-                 $('#image1').attr('src',"upload/"+result.foto);
-                  
+                 $("#url_map").val(result.url_map);
+                 
 			 }
 		 });
 	 }

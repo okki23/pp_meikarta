@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set("Asia/Jakarta");
 ?>
  
  <!DOCTYPE html>
@@ -29,6 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+   <!-- <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">  -->
 
   <!-- skin -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/skin/default.css">
@@ -39,7 +41,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     Author URL: https://bootstrapmade.com
   ======================================================= -->
  <style>
- 
+ /*body{
+  font-family: 'Charmonman', cursive;
+ }*/
 .social {
     position: fixed;
     top: 550px;
@@ -125,8 +129,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="fa fa-bars color-white"></span>
                     </button>
-          <h1><a class="navbar-brand" href="<?php echo base_url(); ?>" data-0="line-height:90px;" data-300="line-height:50px;">Ranty Pesta
+          <h1><a class="navbar-brand" href="<?php echo base_url(); ?>" data-0="line-height:90px;" data-300="line-height:50px;"> <img src="<?php echo base_url('assets/images/rp_logo.png'); ?>" style="width: 80px; height: 60px;"> Ranty Pesta
                     </a></h1>
+        <!-- <link rel="icon" href="<?php echo base_url('assets/images/rp_logo.png'); ?>" type="image/x-icon"> -->
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
@@ -367,29 +372,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
       
  
-  <!--/about-->
-
-  <!-- spacer section:testimonial -->
-  <section id="testimonials-3" class="section" data-stellar-background-ratio="0.5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="align-center">
-            <div class="testimonial pad-top40 pad-bot40 clearfix">
-              <h5>
-                                                Nunc velit risus, dapibus non interdum quis, suscipit nec dolor. Vivamus tempor tempus mauris vitae fermentum. In vitae nulla lacus. Sed sagittis tortor vel arcu sollicitudin nec tincidunt metus suscipit.Nunc velit risus, dapibus non interdum.
-                                            </h5>
-              <br/>
-              <span class="author">&mdash; Jouse Manuel <a href="#">www.jouse-manuel.com</a></span>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
+   
 
   <!-- services -->
   <section id="services" class="section pad-bot5 bg-white">
@@ -460,28 +443,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </section>
   <!--/services-->
-
-  <!-- spacer section:testimonial -->
-  <section id="testimonials" class="section" data-stellar-background-ratio="0.5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="align-center">
-            <div class="testimonial pad-top40 pad-bot40 clearfix">
-              <h5>
-                                                Nunc velit risus, dapibus non interdum quis, suscipit nec dolor. Vivamus tempor tempus mauris vitae fermentum. In vitae nulla lacus. Sed sagittis tortor vel arcu sollicitudin nec tincidunt metus suscipit.Nunc velit risus, dapibus non interdum.
-                                            </h5>
-              <br/>
-              <span class="author">&mdash; Jouse Manuel / www.jouse-manuel.com</span>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
+ 
 
   <!-- client --> <!--client-->
  
@@ -725,9 +687,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="row animated opacity mar-bot0" data-andown="fadeIn" data-animation="animation">
         <div class="col-sm-12 align-center">
           <ul class="social-network social-circle">
-		   <li><a href="https://web.whatsapp.com/send?phone=6283892563770&text=Hallo..Ranty Pesta ! " target="_blank" class="icowa" title="wa"><i class="fa fa-whatsapp"></i></a></li>
-		  
-  
+		      
+            <li><a href="https://web.whatsapp.com/send?phone=6283892563770&text=Hallo..Ranty Pesta ! " target="_blank" class="icowa" title="wa"><i class="fa fa-whatsapp"></i></a></li>
+		   
             <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
             <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
             <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
@@ -860,7 +822,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     
     $('#price_list_item').DataTable( {
-      "ajax": "<?php echo base_url(); ?>price_list_item/fetch_price_list_item_front", 
+      "ajax": "<?php echo base_url(); ?>front/fetch_price_list_item_front", 
        'rowsGroup': [1] 
     });
     
