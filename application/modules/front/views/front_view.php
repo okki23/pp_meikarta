@@ -28,6 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 
   <!-- skin -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/skin/default.css">
@@ -134,8 +135,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="#services">Service</a></li>
             <li><a href="#client">Klien</a></li>
             <li><a href="#section-price_list">Price List Item</a></li>
-            <li><a href="#line-pricing">Pricing</a></li>
-            <li><a href="#section-works">Portfolio</a></li>
+            <li><a href="#line-pricing">Price Package</a></li>
+            <li><a href="#section-works">Foto Gallery</a></li>
             <li><a href="#section-contact">Hubungi Kami</a></li>
             <li><a href="<?php echo base_url('news_list'); ?>" target="_blank">News</a></li>
             <li><a href="<?php echo base_url('login'); ?>">Login</a></li>
@@ -289,19 +290,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="align-center">
             <div class="testimonial  clearfix">
           <div class="table-responsive">
-                 <table class="table table-bordered table-striped table-hover js-basic-example" id="table_id" >
+           <table class="table table-bordered table-striped table-hover js-basic-example" id="price_list_item" >
                   <thead>
                     <tr>
                       <th style="width:5%;">No</th>
-                                            <th style="width:5%;">Foto URL</th>  
-                      <th style="width:5%;">Caption A</th>  
-                      <th style="width:5%;">Caption B</th> 
-                      <th style="width:5%;">Seq No</th> 
-                      <th style="width:15%;">Opsi</th> 
+                      <th style="width:5%;">Kategori</th>  
+                      <th style="width:15%;">Item</th>  
+                      <th style="width:5%;">Satuan</th> 
+                      <th style="width:5%;">Harga Satuan</th> 
+                      <th style="width:5%;">Opsi</th> 
                     </tr>
                   </thead> 
                 </table> 
-                            </div>
+          </div>
             </div>
 
           </div>
@@ -313,6 +314,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </div>
   </section>
+
+  <!-- detail data customer -->
+  <div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Detail Price List Item</h4>
+                        </div>
+                        <div class="modal-body">
+            
+            <table class="table table-responsive">
+              <tr>
+                <td style="font-weight:bold;"> Kategori</td>
+                <td> : </td>
+                <td> <p id="kategori_dtl"> </p> </td>
+                
+                <td style="font-weight:bold;"> Nama Item</td>
+                <td> : </td>
+                <td> <p id="item_dtl"> </p> </td> 
+              </tr>
+              <tr>
+                <td style="font-weight:bold;"> Satuan</td>
+                <td> : </td>
+                <td> <p id="satuan_dtl"> </p> </td>
+                
+                <td style="font-weight:bold;"> Harga Satuan</td>
+                <td> : </td>
+                <td> <p id="harga_satuan_dtl"> </p> </td> 
+              </tr>
+               
+               
+              <tr>
+                <td style="font-weight:bold;"> Foto price_list_item  </td> 
+                <td colspan="4">  : </td> 
+              </tr> 
+              <tr>
+                <td colspan="6" align="center">  
+                <img src="" class="img responsive" style="width:50%; height: 50%;" id="foto_dtl">
+                </td>
+              </tr>
+             
+               <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"> X Tutup </button>
+               </div>
+            </table>
+                           
+             </div>
+                     
+                    </div>
+                </div>
+    </div>
+      
+ 
   <!--/about-->
 
   <!-- spacer section:testimonial -->
@@ -471,15 +525,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- /client -->
 
   <!-- spacer section:stats -->
-  <section id="parallax1" class="section pad-top40 pad-bot40 mar-bot20" data-stellar-background-ratio="0.5">
-    <div class="container ">
-      <div class="align-center pad-top40 pad-bot40">
-        <h4 class="color-white pad-top50">Indoctum accusamus comprehensam</h4>
-        <p class="color-white">Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio dui. Fusce dapibus, tellus ac cursus etiam porta sem malesuada magna mollis euismod. commodo, Faccibus mollis interdum. Morbi leo risus, porta ac, vestibulum at eros.Feugiat
-          accumsan Suspendisse eget Duis faucibus tempus pede pede augue pede. Dapibus mollis dignissim suscipit porta justo nisl amet Nunc quis semper.</p>
-      </div>
-    </div>
-  </section>
+  
   <section id="line-pricing" class="line-section line-center">
     <div class="container pad-top50">
       <div class="row mar-bot10 ">
@@ -487,9 +533,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="section-header">
             <div class="wow bounceIn">
 
-              <h2 class="section-heading animated" data-animation="bounceInUp">Pricing Table</h2>
-              <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit, sed quia non numquam.</p>
-
+              <h2 class="section-heading animated" data-animation="bounceInUp">Price Package</h2>
+              
             </div>
           </div>
         </div>
@@ -497,82 +542,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="line-wrap">
         <div class="line-pricing-table">
           <div class="pricing-table-wrap" data-scrollreveal="enter top over 0.5s after 0.3s">
-            <ul>
-              <li class="line-head-row">
-                Free
-              </li>
-              <li class="line-price-row">
-                <p>
-                  <span class="symbol">$</span>
-                  <span>0</span>
-                </p>
-                <small>Ideal for beginners</small>
-              </li>
-              <li>
-                1 theme included
-              </li>
-              <li>
-                1 year of theme updates
-              </li>
-              <li>
-                20% off future purchases
-              </li>
-              <li class="line-btn-row">
-                <a href="" class="line-btn light">Get Started</a>
-              </li>
-            </ul>
-          </div>
-          <div class="pricing-table-wrap" data-scrollreveal="enter top over 0.5s after 0.5s">
-            <ul class="line-highlight">
-              <li class="line-head-row">
-                Premium
-              </li>
-              <li class="line-price-row">
-                <p>
-                  <span class="symbol">$</span>
-                  <span>300</span>
-                </p>
-                <small>Per user / month</small>
-              </li>
-              <li>
-                24 themes included
-              </li>
-              <li>
-                Lifetime of premium support
-              </li>
-              <li>
-                Access all new themes
-              </li>
-              <li class="line-btn-row">
-                <a href="" class="line-btn green">Get Started</a>
-              </li>
-            </ul>
-          </div>
-          <div class="pricing-table-wrap" data-scrollreveal="enter top over 0.5s after 0.7s">
-            <ul>
-              <li class="line-head-row">
-                Standard
-              </li>
-              <li class="line-price-row">
-                <p>
-                  <span class="symbol">$</span>
-                  <span>150</span>
-                </p>
-                <small>Per user / month</small>
-              </li>
-              <li>
-                12 themes included
-              </li>
-              <li>
-                1 year of theme updates
-              </li>
-              <li>
-                Access all new themes
-              </li>
-              <li class="line-btn-row">
-                <a href="" class="line-btn light">Get Started</a>
-              </li>
-            </ul>
+        
+<div class="row">
+
+    <div class="col-lg-12">
+        
+            <?php
+             foreach ($price_package as $key => $value) {
+           echo '<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="&nbsp; &nbsp;" data-caption="'.$value->keterangan.'" data-image="'.base_url('upload/').$value->foto.'" data-target="#image-gallery">
+
+             
+            <img class="img-responsive" src="'.base_url('upload/').$value->foto.'" alt="Another alt text" style="width:440px; height:257px;" >
+            </a>
+            </div>';
+            }
+            ?>
+
+</div>
+
+
+<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary" id="show-previous-image">Previous</button>
+                </div>
+
+                <div class="col-md-8 text-justify" id="image-gallery-caption">
+                    This text will be overwritten by jQuery
+                </div>
+
+                <div class="col-md-2">
+                    <button type="button" id="show-next-image" class="btn btn-default">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
           </div>
         </div>
       </div>
@@ -580,26 +597,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </section>
 
   <!-- spacer section:testimonial -->
-  <section id="testimonials-2" class="section" data-stellar-background-ratio="0.5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="align-center">
-            <div class="testimonial pad-top40 pad-bot40 clearfix">
-              <h5>
-                                                Nunc velit risus, dapibus non interdum quis, suscipit nec dolor. Vivamus tempor tempus mauris vitae fermentum. In vitae nulla lacus. Sed sagittis tortor vel arcu sollicitudin nec tincidunt metus suscipit.Nunc velit risus, dapibus non interdum.
-                                            </h5>
-              <br/>
-              <span class="author">&mdash; Jouse Manuel / www.jouse-manuel.com</span>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
+     
 
   <!-- section works -->
   <section id="section-works" class="section appear clearfix">
@@ -608,8 +606,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="row mar-bot40">
         <div class="col-md-offset-3 col-md-6">
           <div class="section-header">
-            <h2 class="section-heading animated" data-animation="bounceInUp">Portfolio</h2>
-            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit, sed quia non numquam.</p>
+            <h2 class="section-heading animated" data-animation="bounceInUp">Foto Gallery</h2>
+          
           </div>
         </div>
       </div>
@@ -618,141 +616,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <nav id="filter" class="col-md-12 text-center">
           <ul>
             <li><a href="#" class="current btn-theme btn-small" data-filter="*">All</a></li>
-            <li><a href="#" class="btn-theme btn-small" data-filter=".webdesign">Web Design</a></li>
+            <?php
+            foreach ($cat_foto as $keys => $values) {
+              echo '<li><a href="#" class="btn-theme btn-small" data-filter=".'.$values->id.'">'.$values->deskripsi.'</a></li>';
+            }
+            ?>
+            <!-- <li><a href="#" class="btn-theme btn-small" data-filter=".webdesign">Web Design</a></li>
             <li><a href="#" class="btn-theme btn-small" data-filter=".photography">Photography</a></li>
-            <li><a href="#" class="btn-theme btn-small" data-filter=".print">Print</a></li>
+            <li><a href="#" class="btn-theme btn-small" data-filter=".print">Print</a></li> -->
           </ul>
         </nav>
         <div class="col-md-12">
           <div class="row">
             <div class="portfolio-items isotopeWrapper clearfix" id="3">
-
-              <article class="col-md-4 isotopeItem webdesign">
+              <?php
+              foreach ($list_foto as $keyz => $valuez) {
+                echo '<article class="col-md-4 isotopeItem '.$valuez->id_kategori.'">
                 <div class="portfolio-item">
                   <div class="wow rotateInUpLeft" data-animation-delay="4.8s">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/1.jpg" alt="welcome" />
+                    <img src="'.base_url('upload/'.$valuez->foto).'" alt="'.$valuez->caption.'" />
                   </div>
                   <div class="portfolio-desc align-center">
                     <div class="folio-info">
-                      <h5><a href="#">Project name 1</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/1.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
+                      <h5><a href="#">'.$valuez->caption.'</a></h5>
+                      <a href="'.base_url('upload/'.$valuez->foto).'" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
                     </div>
                   </div>
                 </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem photography">
-                <div class="portfolio-item">
-                  <div class="wow bounceIn">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/2.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Project name 2</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/2.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-
-              <article class="col-md-4 isotopeItem photography">
-                <div class="portfolio-item">
-                  <div class="wow rotateInDownRight">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/3.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Project name 3</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/3.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem print">
-                <div class="portfolio-item">
-                  <div class="wow rotateInUpLeft">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/4.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Project name 4</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/4.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem photography">
-                <div class="portfolio-item">
-                  <div class="wow bounceIn">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/5.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Project name 5</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/5.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem webdesign">
-                <div class="portfolio-item">
-                  <div class="wow rotateInDownRight">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/6.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Project name 6</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/6.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem print">
-                <div class="portfolio-item">
-                  <div class="wow rotateInUpLeft">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/7.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Project name 7</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/7.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem photography">
-                <div class="portfolio-item">
-                  <div class="wow bounceIn">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/8.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Project name 8</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/8.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem print">
-                <div class="portfolio-item">
-                  <div class="wow rotateInDownRight">
-                    <img src="<?php echo base_url(); ?>assets/frontend/img/portfolio/9.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Project name 9</a></h5>
-                      <a href="<?php echo base_url(); ?>assets/frontend/img/portfolio/9.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
+              </article>';
+              }
+              ?>
+              
             </div>
 
           </div>
@@ -763,13 +657,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </div>
   </section>
-  <section id="parallax2" class="section parallax" data-stellar-background-ratio="0.5">
-    <div class="align-center pad-top40 pad-bot30">
-      <h4 class="color-white pad-top50">The middle of that asteroid field</h4>
-      <p class="color-white">We can repair any dings and scrapes to your spacecraft and support,Planning a time travel trip to the middle ages Feugiat accumsan Suspendisse eget Duis faucibus tempus pede pede augue pede.Dapibus mollis dignissim suscipit porta justo nisl amet
-        Nunc quis semper.</p>
-    </div>
-  </section>
+ 
 
   <!-- contact -->
   <section id="section-contact" class="section appear clearfix">
@@ -888,10 +776,96 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/frontend/js/wow.min.js"></script>
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/dataTables.rowsGroup.js"></script>
   <script>
+    
+   function Show_Detail(id){ 
+    $("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
+    $.ajax({
+       url:"<?php echo base_url(); ?>price_list_item/get_data_edit/"+id,
+       type:"GET",
+       dataType:"JSON", 
+       success:function(result){  
+                 var nf = new Intl.NumberFormat();
+                 $("#id_kategori_dtl").html(result.id_kategori);
+                 $("#kategori_dtl").html(result.kategori);
+                 $("#item_dtl").html(result.item); 
+         $("#satuan_dtl").html(result.satuan); 
+         $("#harga_satuan_dtl").html('Rp. '+nf.format(result.harga_satuan));
+          
+         $("#foto_dtl").attr("src","upload/"+result.foto);
+         
+         
+         
+       }
+     });
+   }
+       
     $(document).ready( function () {
-    $('#pricelist_item').DataTable();
-} );
+
+       loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+
+    
+    $('#price_list_item').DataTable( {
+      "ajax": "<?php echo base_url(); ?>price_list_item/fetch_price_list_item_front", 
+       'rowsGroup': [1] 
+    });
+    
+
+    });
     wow = new WOW({}).init();
   </script>
   <script src="<?php echo base_url(); ?>assets/frontend/contactform/contactform.js"></script>

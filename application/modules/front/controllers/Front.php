@@ -18,6 +18,9 @@ class Front extends Parent_Controller {
 		$data['client'] = $this->db->get('m_client')->row();
 		$data['about'] = $this->db->get('m_about')->row();
 		$data['maps'] = $this->db->get('m_googlemaps')->row();
+    $data['price_package'] = $this->db->get('m_pricelist_package')->result();
+    $data['cat_foto'] = $this->db->get('m_cat_foto')->result();
+    $data['list_foto'] = $this->db->get('m_foto')->result();
     $data['slideshow'] = $this->db->get('m_slideshow')->result();
 		$this->load->view('front/front_view',$data);
 	}

@@ -35,6 +35,11 @@ class Price_list_item extends Parent_Controller {
        echo json_encode($getdata);   
   	}  
 
+  	public function fetch_price_list_item_front(){  
+       $getdata = $this->m_price_list_item->fetch_price_list_item_front();
+       echo json_encode($getdata);   
+  	}  
+
   	public function fetch_cat_pricelist(){  
        $getdata = $this->m_price_list_item->fetch_cat_pricelist();
        echo json_encode($getdata);   

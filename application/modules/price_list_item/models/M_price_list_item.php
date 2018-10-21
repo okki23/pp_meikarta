@@ -39,6 +39,32 @@ class M_price_list_item extends Parent_Model {
 		    
     }
 
+
+ public function fetch_price_list_item_front(){
+       $sql = "select a.*,b.deskripsi as kategori from m_pricelist_item a left join m_cat_pricelist b on b.id = a.id_kategori";   
+       $getdata = $this->db->query($sql)->result();
+       $data = array();  
+       $no = 1;
+           foreach($getdata as $row)  
+           {  
+                $sub_array = array();  
+                $sub_array[] = $no;
+                $sub_array[] = $row->kategori;   
+                $sub_array[] = $row->item;   
+                $sub_array[] = $row->satuan;  
+                $sub_array[] = "Rp. ".number_format($row->harga_satuan,0);  
+        
+         
+          $sub_array[] = '<a href="javascript:void(0)" class="btn btn-primary btn-xs" id="detail" onclick="Show_Detail('.$row->id.');" >  Detail </a>';  
+               
+                $data[] = $sub_array;  
+                 $no++;
+           }  
+          
+       return $output = array("data"=>$data);
+        
+    }
+
     public function fetch_cat_pricelist(){   
        $getdata = $this->db->get('m_cat_pricelist')->result();
        $data = array();  

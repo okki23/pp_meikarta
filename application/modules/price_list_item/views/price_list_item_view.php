@@ -376,8 +376,10 @@
 		});
 		
 		$('#example').DataTable( {
-			"ajax": "<?php echo base_url(); ?>price_list_item/fetch_price_list_item" 
+			"ajax": "<?php echo base_url(); ?>price_list_item/fetch_price_list_item", 
+       'rowsGroup': [1] 
 		});
+    
 	 
 	    $('#daftar_sales').DataTable( {
             "ajax": "<?php echo base_url(); ?>price_list_item/fetch_kategori" 
